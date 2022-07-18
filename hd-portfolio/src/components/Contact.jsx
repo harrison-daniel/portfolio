@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { validateEmail } from '../../utils/helpers';
 
-const Contact = () => {
-  return <div>Contact</div>;
-};
+// const Contact = () => {
+//   return <div>Contact</div>;
+// };
 
 
 function ContactForm() {
