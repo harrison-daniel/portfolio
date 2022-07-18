@@ -1,27 +1,29 @@
 import React from "react";
+import gitpub from "../assets/gitpub.png";
+import runbuddy from "../assets/run-buddy.png";
 
 const Portfolio = () => {
 
   const portfolios = [
     {
       id: 1,
-      src: arrayDestruct
+      src: gitpub
     },
     {
       id: 2,
-      src: arrayDestruct
+      src: runbuddy
     },
     {
       id: 3,
-      src: arrayDestruct
+      src: runbuddy
     },
     {
       id: 4,
-      src: arrayDestruct
+      src: runbuddy
     },
     {
       id: 5,
-      src: arrayDestruct
+      src: runbuddy
     }
   ]
 
@@ -36,19 +38,19 @@ const Portfolio = () => {
         <p className="py-6">work here</p>
       </div>
 
+
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 px-12 sm:px-0">
-
-      <div>
-        <img src="" alt="" />
-        <div>
-          <button></button>
-          <button></button>
-        </div>
-      </div>
-
+        {portfolios.map(({id, src}) => (
+          <div key={id} className="shadow-md shadow-gray-600 rounded-lg">
+            <img src={src} alt="gitpub beer logo" className="rounded-md duration-200 hover:scale-105" />
+            <div className="flex items-center justify-center">
+              <button className="w-1/2 px-6 py-3 m-4 duration-200 hover:scale-105">Application</button>
+              <button className="w-1/2 px-6 py-3 m-4 duration-200 hover:scale-105">Github</button>
+            </div>
+          </div>
+        ))}
       </div>
     </div>
-    
   </div>
   );
 };
