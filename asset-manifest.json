@@ -1,16 +1,25 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.84ad5100.css",
-    "main.js": "/portfolio/static/js/main.c26dbaae.js",
+    "main.css": "/portfolio/static/css/main.37f704b8.css",
+    "main.js": "/portfolio/static/js/main.73b90f60.js",
     "static/media/headshot.jpg": "/portfolio/static/media/headshot.dc5d0b15f6314e835d00.jpg",
     "static/media/gitpub.png": "/portfolio/static/media/gitpub.d504ec1a00fe2355f015.png",
     "static/media/run-buddy.png": "/portfolio/static/media/run-buddy.827d392e7779c120bed5.png",
+    "static/media/careerCommander.png": "/portfolio/static/media/careerCommander.7162fc8160e117787727.png",
+    "static/media/graphql.png": "/portfolio/static/media/graphql.fc6b9451733c620ceb86.png",
+    "static/media/react.png": "/portfolio/static/media/react.0cf951a69d8e58f83f9d.png",
+    "static/media/github.png": "/portfolio/static/media/github.3b9e32903aa89111875d.png",
+    "static/media/workDayScheduler.png": "/portfolio/static/media/workDayScheduler.218a94cf2b0ef425eb98.png",
+    "static/media/html.png": "/portfolio/static/media/html.2ba4fabc69a89a8f71e6.png",
+    "static/media/tailwind.png": "/portfolio/static/media/tailwind.e47ac876b8d4d0bba47a.png",
+    "static/media/css.png": "/portfolio/static/media/css.69a82c2d9e45c933a9cb.png",
+    "static/media/javascript.png": "/portfolio/static/media/javascript.1ccd6ef9bb1f9c84ef00.png",
     "index.html": "/portfolio/index.html",
-    "main.84ad5100.css.map": "/portfolio/static/css/main.84ad5100.css.map",
-    "main.c26dbaae.js.map": "/portfolio/static/js/main.c26dbaae.js.map"
+    "main.37f704b8.css.map": "/portfolio/static/css/main.37f704b8.css.map",
+    "main.73b90f60.js.map": "/portfolio/static/js/main.73b90f60.js.map"
   },
   "entrypoints": [
-    "static/css/main.84ad5100.css",
-    "static/js/main.c26dbaae.js"
+    "static/css/main.37f704b8.css",
+    "static/js/main.73b90f60.js"
   ]
 }
