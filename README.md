@@ -2,7 +2,7 @@
 
 # Purpose
 
-Create a Professional Portfolio using React.JS. It will be published on Github pages to share with fellow developers and potential employers.
+Create a Professional Portfolio using React.JS. It will be published at https://harrison-daniel.github.io/portfolio/ to share with fellow developers and potential employers
 
 # Table of Contents
 
