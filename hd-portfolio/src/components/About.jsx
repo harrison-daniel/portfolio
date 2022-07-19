@@ -1,6 +1,57 @@
 import React from "react";
+import html from "../assets/html.png";
+import css from "../assets/css.png";
+import javascript from "../assets/javascript.png";
+import reactImage from "../assets/react.png";
+import graphql from "../assets/graphql.png";
+import github from "../assets/github.png";
+import tailwind from "../assets/tailwind.png";
 
 const About = () => {
+  const techs = [
+    {
+      id: 1,
+      src: html,
+      title: "HTML",
+    },
+    {
+      id: 2,
+      src: css,
+      title: "CSS",
+      
+    },
+    {
+      id: 3,
+      src: tailwind,
+      title: "Tailwind",
+      
+    },
+    {
+      id: 4,
+      src: reactImage,
+      title: "React",
+      
+    },
+    {
+      id: 5,
+      src: javascript,
+      title: "Javascript",
+      
+    },
+    {
+      id: 7,
+      src: graphql,
+      title: "GraphQL",
+      
+    },
+    {
+      id: 8,
+      src: github,
+      title: "GitHub",
+      
+    },
+  ];
+
   return (
     <div
     name="about"
@@ -11,13 +62,28 @@ const About = () => {
         </div>
 
         <p className="text-xl mt-20">
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quas vero asperiores, voluptates est eius molestias libero omnis at alias, amet, tempora deserunt! Saepe ipsa illo perspiciatis nam atque, quod sed.
+          I'm looking to advance my career in the SaaS industry through the skills gained from the University of Richmond Bootcamp and my Hospitality degree. These paired together have provided me an understanding of both the customer side of applications and how to best build and enhance them.
         </p>
 
         <br />
+          I have knowledge of both front end and back-end technologies. I'm familiar with version control and working with other people on team initiatives.
+
+          Below are some of the technologies I have worked with.
 
         <p classNAme="text-xl">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae iure, assumenda quibusdam impedit reiciendis expedita reprehenderit, iusto aperiam laboriosam quod voluptas corrupti obcaecati. Odio assumenda est voluptatum pariatur aliquid asperiores.
+
+        <div className="w-full grid grid-cols-2 sm:grid-cols-3 gap-8 text-center py-8 px-12 sm:px-0">
+          {techs.map(({ id, src, title, style }) => (
+            <div
+              key={id}
+              className={`shadow-md hover:scale-105 duration-500 py-2 rounded-lg ${style}`}
+            >
+              <img src={src} alt="" className="w-20 mx-auto" />
+              <p className="mt-4">{title}</p>
+            </div>
+          ))}
+        </div>
+          
         </p>
       </div>
     </div>

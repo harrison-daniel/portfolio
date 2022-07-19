@@ -1,6 +1,9 @@
 import React from "react";
 import gitpub from "../assets/gitpub.png";
 import runbuddy from "../assets/run-buddy.png";
+import careerCommander from "../assets/careerCommander.png";
+import workDayScheduler from "../assets/workDayScheduler.png";
+
 
 const Portfolio = () => {
 
@@ -11,20 +14,20 @@ const Portfolio = () => {
     },
     {
       id: 2,
-      src: runbuddy
+      src: careerCommander
     },
     {
       id: 3,
-      src: runbuddy
+      src: workDayScheduler
     },
     {
       id: 4,
       src: runbuddy
-    },
-    {
-      id: 5,
-      src: runbuddy
     }
+    // {
+    //   id: 5,
+    //   src: runbuddy
+    // }
   ]
 
   return (
@@ -35,7 +38,7 @@ const Portfolio = () => {
     <div className="max-w-screen-lg p-4 mx-auto flex flex-col justify-center w-full h-full">
       <div className="pb-8">
         <p className="text-4xl font-bold inline border-b-4 border-gray-500">Portfolio</p>
-        <p className="py-6">work here</p>
+        <p className="py-6"></p>
       </div>
 
 
