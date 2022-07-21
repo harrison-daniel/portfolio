@@ -7,7 +7,7 @@ import graphql from "../assets/graphql.png";
 import github from "../assets/github.png";
 import tailwind from "../assets/tailwind.png";
 
-const About = () => {
+const AboutMe = () => {
   const techs = [
     {
       id: 1,
@@ -90,4 +90,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default AboutMe;
