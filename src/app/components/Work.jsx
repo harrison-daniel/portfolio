@@ -32,7 +32,7 @@ export default function Work() {
               <div className='px-6 py-4'>
                 <div className='font-bold text-xl mb-2'>GitPub</div>
                 <p className='text-gray-700 text-base'>
-                  Search nearby breweries in your area and add/save "entries" to
+                  Search nearby breweries in your area and add/save entries to
                   your profile.
                 </p>
                 <div className='pt-6'>

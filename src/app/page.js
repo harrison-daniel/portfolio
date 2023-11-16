@@ -46,17 +46,16 @@ export default function Home() {
 
             <p className=' text-lg sm:max-w-lg sm:text-left ' id='landing-p'>
               Over 5 years of expereince in the Tech industry with an emphasis
-              on the MERN stack,(MongoDB, Express.js, React.js, and Node.js).{' '}
+              on the MERN stack,(MongoDB, Express.js, React.js, and Node.js).
               <br />
               <br />
-              Having been on all ends of software solutions, I'm knowledgeable
+              Having been on all ends of software solutions, I am knowledgeable
               about working through the entire life cycle of a product & enjoy
               creating and optimizing user experiences.
             </p>
             <div className='flex justify-center sm:justify-start p-4'>
               <Link
                 href='#work'
-                id=''
                 className=' bg-emerald-800 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded'>
                 {/* className=' bg-cyan-900 text-white font-bold py-2 px-4 */}
                 My Work
