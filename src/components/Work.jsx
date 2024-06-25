@@ -17,7 +17,7 @@ const projects = [
     description:
       'Search for breweries in your area and add custom entries or notes to your profile.',
     descriptionModal:
-      'this is the desc for when the modal pops up. share additional info here about building the project',
+      'Search for breweries in your area and add custom entries or notes to your profile.',
     link: 'https://gitpub.vercel.app',
     tags: [
       'Next.js',
@@ -36,7 +36,7 @@ const projects = [
     title: 'PicknFlick',
     description: 'Random Decision Maker.. with a twist!',
     descriptionModal:
-      'this is the desc for when the modal pops up. share additional info here about building the project',
+      'Search for breweries in your area and add custom entries or notes to your profile.',
     link: 'https://picknflick.com',
     tags: [
       'Next.js',
@@ -55,7 +55,7 @@ const projects = [
     title: 'Password Generator',
     description: 'Custom, unique password generator',
     descriptionModal:
-      'this is the desc for when the modal pops up. share additional info here about building the project',
+      'Search for breweries in your area and add custom entries or notes to your profile.',
     link: 'https://harrison-daniel.github.io/password-generator/',
     tags: ['Javascript', 'HTML', 'CSS'],
   },

@@ -30,7 +30,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
         onClick={onClose}
       />
       <motion.div
-        className='flex flex-col gap-[5vh] bg-white rounded-lg p-4 md:p-8 mx-auto relative z-20 h-[70vh] w-[90vw] md:h-[50vh] md:w-[30vw]'
+        className='flex flex-col gap-[5vh] bg-white rounded-lg p-4 md:p-8 mx-auto relative z-20 h-[63vh] w-[90vw] md:h-[50vh] md:w-[30vw]'
         variants={modalVariants}
         initial='hidden'
         animate='visible'
