@@ -4,7 +4,7 @@ export default function Footer() {
       <p
         className='text-black relative flex justify-center p-9 z-10 opacity-100'
         id='footer-text'>
-        @Harrison Daniel 2023
+        @Harrison Daniel 2024
       </p>
     </div>
   );
