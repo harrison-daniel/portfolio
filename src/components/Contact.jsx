@@ -76,7 +76,7 @@ export default function Contact() {
             <Link href='mailto:harrisonhjd@gmail.com'>
               <BsFillEnvelopeFill />
             </Link>
-            <Link href='#'>
+            <Link href='tel:+8045199827'>
               <BsFillTelephoneFill />
             </Link>
           </ul>

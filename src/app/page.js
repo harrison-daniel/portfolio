@@ -1,6 +1,6 @@
 import Landing from '../components/Landing';
 import Work from '../components/Work';
-import Contact from '../components/Contact';
+import ContactFormWrapper from '../components/ContactForm';
 
 export default function Home() {
   return (
@@ -12,7 +12,7 @@ export default function Home() {
         <Work />
       </section>
       <section id='contact'>
-        <Contact />
+        <ContactFormWrapper />
       </section>
     </>
   );

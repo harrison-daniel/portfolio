@@ -35,8 +35,7 @@ const projects = [
     alt: 'PicknFlick logo',
     title: 'PicknFlick',
     description: 'Random Decision Maker.. with a twist!',
-    descriptionModal:
-      'Search for breweries in your area and add custom entries or notes to your profile.',
+    descriptionModal: 'Random Decision Maker.. with a twist!',
     link: 'https://picknflick.com',
     tags: [
       'Next.js',
@@ -54,8 +53,7 @@ const projects = [
     alt: 'picture of a password generator',
     title: 'Password Generator',
     description: 'Custom, unique password generator',
-    descriptionModal:
-      'Search for breweries in your area and add custom entries or notes to your profile.',
+    descriptionModal: 'Custom, unique password generator',
     link: 'https://harrison-daniel.github.io/password-generator/',
     tags: ['Javascript', 'HTML', 'CSS'],
   },
@@ -79,13 +77,13 @@ const Work = () => {
   };
 
   return (
-    <div className=' pt-[10vh] lg:pt-[9vh] '>
+    <div className=' pt-[10vh] lg:pt-[9vh] pb-48 '>
       <div
         className='w-full  flex flex-col gap-6  min-h-screen py-6 px-[2vw]  bg-zinc-50  items-center'
         id='work'>
         <div className='w-auto mx-auto'>
           <motion.div
-            className='flex justify-center text-amber-600 '
+            className='flex justify-center text-black '
             initial='hidden'
             whileInView='visible'
             viewport={{ once: true, amount: 0.5 }}

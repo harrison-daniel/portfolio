@@ -81,7 +81,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
               <span
                 key={index}
                 className=' bg-gray-200 rounded-md px-2 py-1 text-xs md:text-sm font-semibold text-gray-700 mr-2 mb-2'>
-                #{tag}
+                {tag}
               </span>
             ))}
           </div>

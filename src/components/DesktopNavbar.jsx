@@ -49,14 +49,7 @@ export default function DesktopNavbar() {
             }`}>
             <Link href='/'>Home</Link>
           </li>
-          {/* <li
-            className={`ml-10 text-base font-semibold uppercase hover:text-emerald-700 hover:border-b hover:border-b-emerald-700 ${
-              activeSection === '/'
-                ? 'text-emerald-700 border-b border-b-emerald-700'
-                : ''
-            }`}>
-            <Link href='/'>About</Link>
-          </li> */}
+
           <li
             className={`ml-10 text-base font-semibold uppercase hover:text-emerald-700  ${
               activeSection === 'work'

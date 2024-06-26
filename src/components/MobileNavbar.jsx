@@ -9,11 +9,11 @@ import HdLogo1 from '../../public/assets/images/hd-logo-1.png';
 import { BiDownload } from 'react-icons/bi';
 
 const MOBILE_NAV_ITEMS = [
-  { id: 0, navTitle: 'Home', href: '/' },
+  { id: 0, navTitle: 'Home', href: '/', activeSection: '/' },
 
-  { id: 1, navTitle: 'My Work', href: '/#work' },
+  { id: 1, navTitle: 'My Work', href: '/#work', activeSection: 'work' },
 
-  { id: 2, navTitle: 'Contact', href: '/#contact' },
+  { id: 2, navTitle: 'Contact', href: '/#contact', activeSection: 'contact' },
   {
     id: 3,
     navTitle: '',
@@ -34,6 +34,32 @@ export default function MobileNavbar() {
     window.addEventListener('keydown', handleEsc);
     return () => {
       window.removeEventListener('keydown', handleEsc);
+    };
+  }, []);
+
+  const [activeSection, setActiveSection] = useState('/');
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = document.querySelectorAll('section');
+      let foundSection = '';
+      sections.forEach((section) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= 100 && rect.bottom >= 100) {
+          foundSection = section.id;
+        }
+      });
+      if (!foundSection) {
+        setActiveSection('/');
+      } else {
+        setActiveSection(foundSection);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Set the initial section on load
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -302,24 +328,20 @@ export default function MobileNavbar() {
                     </Link>
                   </>
                 ) : (
-                  <Link href={navItem.href}>{navItem.navTitle}</Link>
+                  <Link
+                    href={navItem.href}
+                    className={`  font-semibold uppercase   ${
+                      activeSection === navItem.activeSection
+                        ? 'text-emerald-700 '
+                        : ''
+                    }`}>
+                    {navItem.navTitle}
+                  </Link>
                 )}
               </motion.div>
             </motion.li>
           ))}
         </motion.ul>
-
-        {/* <motion.div
-          variants={fadeInVariant}
-          className='contact w-full flex mx-auto justify-center'>
-          <Link
-            href='/HarrisonDanielResume.pdf'
-            target='_blank'
-            className='flex flex-row gap-2 items-center bg-amber-600 rounded-md py-1 px-2 text-neutral-900 '>
-            <BiDownload />
-            Resume
-          </Link>
-        </motion.div> */}
 
         <motion.div variants={fadeInVariant} className='contact'>
           <div className='flex justify-center mx-20 mt-20 mb-8 text-3xl'>
@@ -335,41 +357,11 @@ export default function MobileNavbar() {
               <Link href='mailto:harrisonhjd@gmail.com'>
                 <BsFillEnvelopeFill />
               </Link>
-              <Link href='#'>
+              <Link href='tel:+8045199827'>
                 <BsFillTelephoneFill />
               </Link>
             </ul>
           </div>
-
-          {/* <div className='flex flex-wrap justify-center pt-16 text-center text-black'>
-            <p className='uppercase tracking-widest text-2xl'>
-              Connect with me
-            </p>
-            <div className='flex justify-around my-4 w-full'>
-              <Link
-                href='https://www.linkedin.com/in/harrisondaniel/'
-                target='_blank'>
-                <div className='rounded-full shadow-lg shadow-gray-400 bg-black text-white p-3 cursor-pointer hover:scale-105'>
-                  <AiFillLinkedin />
-                </div>
-              </Link>
-              <Link href='https://github.com/harrison-daniel' target='_blank'>
-                <div className='rounded-full shadow-lg shadow-gray-400 bg-black text-white p-3 cursor-pointer hover:scale-105'>
-                  <AiFillGithub />
-                </div>
-              </Link>
-              <Link href='mailto:harrisonhjd@gmail.com'>
-                <div className='rounded-full shadow-lg shadow-gray-400 bg-black text-white p-3 cursor-pointer hover:scale-105'>
-                  <BsFillEnvelopeFill />
-                </div>
-              </Link>
-              <Link href=''>
-                <div className='rounded-full shadow-lg shadow-gray-400 bg-black text-white p-3 cursor-pointer hover:scale-105'>
-                  <BsFillTelephoneFill />
-                </div>
-              </Link>
-            </div>
-          </div> */}
         </motion.div>
       </motion.div>
     </motion.nav>
