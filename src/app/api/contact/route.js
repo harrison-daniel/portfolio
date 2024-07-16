@@ -43,12 +43,11 @@ export async function POST(req) {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: process.env.RECIPIENT_EMAIL,
-    subject: `Contact form submission from ${name}`,
-    text: `You have received a new message from your website contact form.
-    \n\nHere are the details:
-    \nName: ${name}
+    subject: `New Pfolio Message from ${name}!`,
+    text: `You have received a new message from your website contact form. Here are the details:
     \nEmail: ${email}
-    \nPhone: ${phone || 'N/A'}
+    Name: ${name}
+    Phone: ${phone || 'N/A'}
     \nMessage: ${message}`,
   };
 
