@@ -70,7 +70,7 @@ export default function MobileNavbar() {
       opacity: 0,
       y: '-100%',
       transition: {
-        duration: 0.5,
+        duration: 0.3, // Reduced from 0.5 to 0.3
         ease: 'easeInOut',
       },
     },
@@ -78,8 +78,8 @@ export default function MobileNavbar() {
       opacity: 1,
       y: '0%',
       transition: {
-        delay: 1.1,
-        duration: 0.5,
+        delay: 0.6, // Reduced from 1.1 to 0.6
+        duration: 0.3, // Reduced from 0.5 to 0.3
         ease: 'easeInOut',
       },
     },
@@ -89,16 +89,16 @@ export default function MobileNavbar() {
     opened: {
       y: '0%',
       transition: {
-        delay: 0.15,
-        duration: 1.1,
+        delay: 0.05, // Reduced from 0.15 to 0.05
+        duration: 0.6, // Reduced from 1.1 to 0.6
         ease: [0.74, 0, 0.19, 1.02],
       },
     },
     closed: {
       y: '-100%',
       transition: {
-        delay: 0.35,
-        duration: 0.63,
+        delay: 0.2, // Reduced from 0.35 to 0.2
+        duration: 0.4, // Reduced from 0.63 to 0.4
         ease: [0.74, 0, 0.19, 1.02],
       },
     },
@@ -108,14 +108,14 @@ export default function MobileNavbar() {
     opened: {
       opacity: 1,
       transition: {
-        delay: 1.2,
-        duration: 0.5,
+        delay: 0.7,
+        duration: 0.4,
       },
     },
     closed: {
       opacity: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.4,
       },
     },
   };
@@ -123,13 +123,13 @@ export default function MobileNavbar() {
   const ulVariant = {
     opened: {
       transition: {
-        delayChildren: 1,
-        staggerChildren: 0.18,
+        delayChildren: 0.6,
+        staggerChildren: 0.1,
       },
     },
     closed: {
       transition: {
-        staggerChildren: 0.06,
+        staggerChildren: 0.05,
         staggerDirection: -1,
       },
     },
@@ -140,7 +140,7 @@ export default function MobileNavbar() {
       opacity: 1,
       y: '0%',
       transition: {
-        duration: 0.65,
+        duration: 0.4,
         ease: 'easeOut',
       },
     },
@@ -148,7 +148,7 @@ export default function MobileNavbar() {
       opacity: 0,
       y: '100%',
       transition: {
-        duration: 0.25,
+        duration: 0.2,
         ease: 'easeInOut',
       },
     },
@@ -246,7 +246,7 @@ export default function MobileNavbar() {
       initial='closed'
       animate={mobileNavOpen ? 'opened' : 'closed'}
       className='flex flex-col'>
-      <div className='flex justify-between items-center w-full p-2 px-4 bg-gray-100'>
+      <div className='flex w-full items-center justify-between bg-gray-100 p-2 px-4'>
         <motion.div
           variants={hideNavItemsVariant}
           className='text-2xl font-bold'>
@@ -257,7 +257,7 @@ export default function MobileNavbar() {
           animate={mobileNavOpen ? 'opened' : 'closed'}
           variants={hideNavItemsVariant}
           onClick={handleMenuClick}
-          className='cursor-pointer '>
+          className='cursor-pointer'>
           <motion.div
             className=''
             style={{ width: container.size, height: container.size }}
@@ -278,14 +278,14 @@ export default function MobileNavbar() {
       </div>
       <motion.div
         variants={mobileMenuVariant}
-        className='bg-neutral-50 fixed top-0 right-0 w-full h-full flex flex-col  gap-6'>
-        <div className='flex justify-end items-center w-full p-4 '>
+        className='fixed right-0 top-0 flex h-full w-full flex-col gap-6 bg-neutral-50'>
+        <div className='flex w-full items-center justify-end p-4'>
           <motion.div
             initial={false}
             animate={mobileNavOpen ? 'opened' : 'closed'}
             variants={fadeInVariant}
             onClick={() => setMobileNavOpen(false)}
-            className='cursor-pointer '>
+            className='cursor-pointer'>
             <motion.div
               className=''
               style={{ width: container.size, height: container.size }}
@@ -307,7 +307,7 @@ export default function MobileNavbar() {
         </div>
         <motion.ul
           variants={ulVariant}
-          className='flex flex-col text-black items-center gap-9 font-bold text-2xl pt-10'>
+          className='flex flex-col items-center gap-9 pt-10 text-2xl font-bold text-black'>
           {MOBILE_NAV_ITEMS.map((navItem) => (
             <motion.li
               whileTap={{ scale: 0.95 }}
@@ -319,7 +319,7 @@ export default function MobileNavbar() {
                     <Link
                       href='/HarrisonDanielResume.pdf'
                       target='_blank'
-                      className='flex flex-row gap-2 items-center bg-amber-600 rounded-md py-1 px-2 text-neutral-900 '>
+                      className='flex flex-row items-center gap-2 rounded-md bg-amber-600 px-2 py-1 text-neutral-900'>
                       <BiDownload />
                       Resume
                     </Link>
@@ -330,9 +330,9 @@ export default function MobileNavbar() {
                 ) : (
                   <Link
                     href={navItem.href}
-                    className={`  font-semibold uppercase   ${
+                    className={`font-semibold uppercase ${
                       activeSection === navItem.activeSection
-                        ? 'text-emerald-700 '
+                        ? 'text-emerald-700'
                         : ''
                     }`}>
                     {navItem.navTitle}
@@ -344,7 +344,7 @@ export default function MobileNavbar() {
         </motion.ul>
 
         <motion.div variants={fadeInVariant} className='contact'>
-          <div className='flex justify-center mx-20 mt-20 mb-8 text-3xl'>
+          <div className='mx-20 mb-8 mt-20 flex justify-center text-3xl'>
             <ul className='flex gap-14'>
               <Link
                 href='https://www.linkedin.com/in/harrisondaniel/'

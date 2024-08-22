@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import BackgroundImage from '../components/BackgroundImage';
 import { Inter } from 'next/font/google';
+
 // import { Poppins } from 'next/font/google';
 // const poppins = Poppins({
 //   weight: ['400', '600', '700'],

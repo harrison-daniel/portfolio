@@ -1,8 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
-import { BsFillEnvelopeFill, BsFillTelephoneFill } from 'react-icons/bs';
 import Link from 'next/link';
 
 const landingContainerVariants = {
@@ -30,28 +28,26 @@ export default function Landing() {
           initial='hidden'
           animate='visible'
           variants={landingContainerVariants}
-          className='flex flex-col items-center pt-28 px-6 min-h-screen mx-auto  rounded-3xl '>
-          <div className='bg-neutral-50'>
+          className='mx-auto flex min-h-screen flex-col items-center rounded-3xl px-6 pt-[14vh]'>
+          <div className='flex flex-col gap-2.5 bg-neutral-50'>
             <motion.h1
               variants={landingItemVariants}
-              className='font-mono fancy text-5xl lg:text-7xl font-bold pb-2'>
+              className='fancy font-mono text-5xl font-bold lg:text-7xl'>
               Harrison Daniel
             </motion.h1>
             <motion.h2
               variants={landingItemVariants}
-              className='font-mono font-extrabold text-xl lg:text-3xl text-amber-600 pb-2'>
-              Full Stack Web Developer
+              className='font-mono text-xl font-extrabold text-amber-600 lg:text-3xl'>
+              Full Stack Developer
             </motion.h2>
             <motion.p
               variants={landingItemVariants}
               className='text-base sm:max-w-lg'>
-              Over 5 years of experience in the SaaS industry across multiple
-              verticals from database performance monitoring to Integration
-              Platform as a Service. Having been on all ends of software
-              solutions, I am knowledgeable about working through the entire
-              life cycle of a product in both pre and post sales roles. I bring
-              a unique blend of technical expertise and customer-centric
-              insights and enjoy creating & optimizing user experiences.
+              Full Stack Developer with over five years of experience in the
+              SaaS industry across multiple verticals. Proven ability to build
+              and scale applications leveraging a unique blend of technical
+              expertise and customer-centric insights. Adept at delivering and
+              optimizing high quality, user-focused solutions.
             </motion.p>
           </div>
           <motion.div
@@ -59,7 +55,7 @@ export default function Landing() {
             className='flex justify-center p-4'>
             <Link
               href='#work'
-              className='bg-emerald-800 hover:bg-emerald-700 text-white font-bold py-2 px-4 mt-6 rounded'>
+              className='mt-6 rounded bg-emerald-800 px-4 py-2 font-bold text-white hover:bg-emerald-700'>
               My Work
             </Link>
           </motion.div>

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 html {
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
   scroll-behavior: smooth;
 }
 
@@ -38,8 +38,6 @@ body::-webkit-scrollbar {
 
 nav {
   .menu-container {
-    /* overflow-y: hidden; */
-
     div {
       text-transform: uppercase;
       font-size: 13px;
@@ -56,18 +54,24 @@ nav {
   width: 28px;
   border-radius: 100px;
 }
-/* 
-#recaptcha-badge {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-} */
 
-/* .grecaptcha-badge {
-  position: static !important;
-  margin-top: 10px; 
-} */
+input,
+textarea {
+  font-size: 16px;
+}
 
 .grecaptcha-badge {
   visibility: hidden;
 }
+
+/* .background-overlay {
+  transition: opacity 0.4s ease;
+}
+
+.background-overlay.visible {
+  opacity: 1;
+}
+
+.background-overlay.hidden {
+  opacity: 0;
+} */
