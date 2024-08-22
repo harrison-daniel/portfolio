@@ -5,7 +5,7 @@ import ProjectList from './ProjectList';
 
 const Work = () => {
   return (
-    <div className=''>
+    <div>
       <ProjectList />
     </div>
   );

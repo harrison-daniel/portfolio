@@ -42,7 +42,7 @@ const ProjectCard = ({ project, isOpen, onClick }) => {
       <motion.div
         layout
         onClick={onClick}
-        className={`flex cursor-pointer justify-center gap-1 bg-zinc-200 ${
+        className={`flex cursor-pointer justify-center gap-1 rounded-lg bg-stone-100 ${
           isOpen
             ? 'fixed inset-0 z-50 m-auto flex h-[80vh] w-[100vw] flex-col p-8 md:h-[50vh] md:w-[40rem]'
             : 'flex flex-col items-center justify-center gap-11 p-6'
