@@ -58,7 +58,7 @@ const projects = [
       },
       {
         label: 'Back-end:',
-        text: 'Nginx serves as a reverse proxy, and the app is secured with/served over HTTPS using a self-signed certificate, with Cron jobs for SSL certificate renewal.',
+        text: 'The app is hosted on an AWS EC2 instance (Ubuntu), using an Elastic IP with Nginx as a reverse proxy. It is secured with/served over HTTPS using a self-signed certificate, with Cron jobs for SSL certificate renewal.',
       },
     ],
 
