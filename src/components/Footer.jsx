@@ -1,3 +1,14 @@
+'use client';
+import React, { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+
+import Link from 'next/link';
+import Image from 'next/image';
+import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
+import { BsFillEnvelopeFill, BsFillTelephoneFill } from 'react-icons/bs';
+import HdLogo1 from '../../public/assets/images/hd-logo-1.png';
+import { BiDownload } from 'react-icons/bi';
+
 export default function Footer() {
   return (
     <>

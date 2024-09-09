@@ -5,20 +5,20 @@ import { BsFillEnvelopeFill, BsFillTelephoneFill } from 'react-icons/bs';
 
 export default function Contact() {
   return (
-    <div className='min-h-screen ' id='contact'>
+    <div className='min-h-screen' id='contact'>
       <div className='pt-48'>
         {/* Contact Form */}
         <div className='flex justify-center'>
           <div className='w-full max-w-md'>
-            <form className='bg-white shadow-md rounded px-8 pt-12 pb-8 mb-4'>
+            <form className='mb-4 rounded bg-white px-8 pb-8 pt-12 shadow-md'>
               <div className='mb-4'>
                 <label
-                  className='block text-gray-700 text-sm font-bold mb-2'
+                  className='mb-2 block text-sm font-bold text-gray-700'
                   htmlFor='yourEmail'>
                   Your Email
                 </label>
                 <input
-                  className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                  className='focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none'
                   id='email'
                   type='text'
                   placeholder='name@email.com'
@@ -27,12 +27,12 @@ export default function Contact() {
               </div>
               <div className='mb-4'>
                 <label
-                  className='block text-gray-700 text-sm font-bold mb-2'
+                  className='mb-2 block text-sm font-bold text-gray-700'
                   htmlFor='subject'>
                   Subject
                 </label>
                 <input
-                  className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                  className='focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none'
                   id='subject'
                   type='text'
                   placeholder='Let me know how I can help you'
@@ -40,12 +40,12 @@ export default function Contact() {
               </div>
               <div className='mb-4'>
                 <label
-                  className='block text-gray-700 text-sm font-bold mb-2'
+                  className='mb-2 block text-sm font-bold text-gray-700'
                   htmlFor='message'>
                   Your Message
                 </label>
                 <input
-                  className='shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline'
+                  className='focus:shadow-outline w-full appearance-none rounded border px-3 py-2 leading-tight text-gray-700 shadow focus:outline-none'
                   id='message'
                   type='text'
                   placeholder='Leave a comment..'
@@ -54,7 +54,7 @@ export default function Contact() {
               </div>
               <div className='flex items-center justify-between'>
                 <button
-                  className='bg-emerald-800 hover:bg-emerald-700 text-white font-bold py-2 px-4 rounded'
+                  className='rounded bg-emerald-800 px-4 py-2 font-bold text-white hover:bg-emerald-700'
                   type='submit'>
                   Send Message
                 </button>
@@ -63,8 +63,8 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className='flex justify-center mx-20 mt-20 mb-8 text-3xl'>
-          <ul className='flex gap-14'>
+        {/* <div className='mx-20 mb-8 mt-20 flex justify-center bg-red-500 text-3xl'>
+          <ul className='flex gap-14 bg-red-500'>
             <Link
               href='https://www.linkedin.com/in/harrisondaniel/'
               target='_blank'>
@@ -80,7 +80,7 @@ export default function Contact() {
               <BsFillTelephoneFill />
             </Link>
           </ul>
-        </div>
+        </div> */}
       </div>
     </div>
   );

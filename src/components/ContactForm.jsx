@@ -10,6 +10,9 @@ import {
   useGoogleReCaptcha,
 } from 'react-google-recaptcha-v3';
 import Toast from './Toast';
+import { AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
+import { BsFillEnvelopeFill, BsFillTelephoneFill } from 'react-icons/bs';
+import Link from 'next/link';
 
 const schema = z.object({
   name: z.string().nonempty('Name is required'),
@@ -74,10 +77,10 @@ const ContactForm = () => {
   };
 
   return (
-    <div className='mx-auto flex w-full max-w-md flex-col justify-center rounded-md bg-white p-4 shadow-md'>
-      <h1 className='flex justify-center py-1 text-lg font-bold text-black sm:text-xl md:text-2xl'>
-        Contact Me
-      </h1>
+    <div className='mx-auto flex w-full max-w-md flex-col justify-center rounded-md bg-white p-3.5 shadow-md'>
+      {/* <h1 className='flex justify-center py-1 text-lg font-bold text-black sm:text-xl md:text-2xl'>
+        Send a message
+      </h1> */}
       {toast.message && (
         <Toast
           message={toast.message}
@@ -85,16 +88,14 @@ const ContactForm = () => {
           onClose={() => setToast({ message: '', type: '' })}
         />
       )}
-      <form onSubmit={handleSubmit(onSubmit)} className='text-sm sm:text-base'>
+      <form onSubmit={handleSubmit(onSubmit)} className='text-base'>
         {/* Name Field */}
         <div className='mb-4'>
-          <label className='block text-sm text-gray-700 sm:text-base'>
-            Name
-          </label>
+          <label className='block text-base text-gray-700'>Name</label>
           <input
             type='text'
             {...register('name')}
-            className='mt-1 w-full rounded border border-gray-300 p-2'
+            className='mt-1 w-full rounded border border-gray-300 p-1'
             disabled={loading} // Disable input while loading
           />
           {errors.name && (
@@ -103,13 +104,11 @@ const ContactForm = () => {
         </div>
         {/* Email Field */}
         <div className='mb-4'>
-          <label className='block text-sm text-gray-700 sm:text-base'>
-            Email
-          </label>
+          <label className='block text-base text-gray-700'>Email</label>
           <input
             type='email'
             {...register('email')}
-            className='mt-1 w-full rounded border border-gray-300 p-2'
+            className='mt-1 w-full rounded border border-gray-300 p-1'
             disabled={loading} // Disable input while loading
           />
           {errors.email && (
@@ -118,13 +117,13 @@ const ContactForm = () => {
         </div>
         {/* Phone Field */}
         <div className='mb-4'>
-          <label className='block text-sm text-gray-700 sm:text-base'>
+          <label className='block text-base text-gray-700'>
             Phone (optional)
           </label>
           <input
             type='text'
             {...register('phone')}
-            className='mt-1 w-full rounded border border-gray-300 p-2'
+            className='mt-1 w-full rounded border border-gray-300 p-1'
             disabled={loading} // Disable input while loading
           />
           {errors.phone && (
@@ -133,12 +132,10 @@ const ContactForm = () => {
         </div>
         {/* Message Field */}
         <div className='mb-4'>
-          <label className='block text-sm text-gray-700 sm:text-base'>
-            Message
-          </label>
+          <label className='block text-base text-gray-700'>Message</label>
           <textarea
             {...register('message')}
-            className='mt-1 w-full rounded border border-gray-300 p-2'
+            className='mt-1 w-full rounded border border-gray-300 p-1'
             rows='3'
             disabled={loading} // Disable input while loading
           />
@@ -172,13 +169,39 @@ const ContactForm = () => {
 
 const ContactFormWrapper = () => (
   <div
-    className='mt-[8vh] flex min-h-screen flex-col justify-center'
+    className='flex min-h-screen flex-col justify-normal pt-[12vh] md:justify-center md:pt-0 md:align-middle'
     id='contact'>
+    <div>
+      <h1 className='flex justify-center py-1 text-2xl font-bold text-black sm:text-2xl md:text-2xl'>
+        Contact Me
+      </h1>
+    </div>
     <div>
       <GoogleReCaptchaProvider
         reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}>
         <ContactForm />
       </GoogleReCaptchaProvider>
+    </div>
+
+    <div className='mt-[7vh] flex flex-col justify-center p-4'>
+      <div className='mx-20 flex justify-center text-3xl'>
+        <ul className='flex gap-14'>
+          <Link
+            href='https://www.linkedin.com/in/harrisondaniel/'
+            target='_blank'>
+            <AiFillLinkedin />
+          </Link>
+          <Link href='https://github.com/harrison-daniel' target='_blank'>
+            <AiFillGithub />
+          </Link>
+          <Link href='mailto:harrisonhjd@gmail.com'>
+            <BsFillEnvelopeFill />
+          </Link>
+          <Link href='tel:+8045199827'>
+            <BsFillTelephoneFill />
+          </Link>
+        </ul>
+      </div>
     </div>
   </div>
 );

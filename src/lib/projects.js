@@ -1,13 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import gitpub from '../../public/assets/images/yesmore-content-beer.jpg';
-
+import Gitpub from '../../public/assets/images/yesmore-content-beer.jpg';
 import PicknFlickLogo from '../../public/assets/images/picknflick-logo.png';
 import PasswordGenerator from '../../public/assets/images/password-generator.png';
 
 const projects = [
   {
-    image: gitpub,
+    image: Gitpub,
     alt: 'picture of full beer mug with foam on top',
     title: 'GitPub',
     description:
