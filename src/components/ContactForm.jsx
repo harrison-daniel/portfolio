@@ -12,6 +12,8 @@ import {
 import Toast from './Toast';
 import { AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
 import { BsFillEnvelopeFill, BsFillTelephoneFill } from 'react-icons/bs';
+import { BiDownload } from 'react-icons/bi';
+
 import Link from 'next/link';
 
 const schema = z.object({
@@ -90,7 +92,7 @@ const ContactForm = () => {
       )}
       <form onSubmit={handleSubmit(onSubmit)} className='text-base'>
         {/* Name Field */}
-        <div className='mb-4'>
+        <div className='mb-3'>
           <label className='block text-base text-gray-700'>Name</label>
           <input
             type='text'
@@ -103,7 +105,7 @@ const ContactForm = () => {
           )}
         </div>
         {/* Email Field */}
-        <div className='mb-4'>
+        <div className='mb-3'>
           <label className='block text-base text-gray-700'>Email</label>
           <input
             type='email'
@@ -116,7 +118,7 @@ const ContactForm = () => {
           )}
         </div>
         {/* Phone Field */}
-        <div className='mb-4'>
+        <div className='mb-3'>
           <label className='block text-base text-gray-700'>
             Phone (optional)
           </label>
@@ -131,7 +133,7 @@ const ContactForm = () => {
           )}
         </div>
         {/* Message Field */}
-        <div className='mb-4'>
+        <div className='mb-3'>
           <label className='block text-base text-gray-700'>Message</label>
           <textarea
             {...register('message')}
@@ -172,7 +174,7 @@ const ContactFormWrapper = () => (
     className='flex min-h-screen flex-col justify-normal pt-[12vh] md:justify-center md:pt-0 md:align-middle'
     id='contact'>
     <div>
-      <h1 className='flex justify-center py-1 text-2xl font-bold text-black sm:text-2xl md:text-2xl'>
+      <h1 className='mb-2 flex justify-center py-1 text-3xl font-bold text-black sm:text-4xl md:mb-12 md:text-5xl'>
         Contact Me
       </h1>
     </div>
@@ -183,7 +185,7 @@ const ContactFormWrapper = () => (
       </GoogleReCaptchaProvider>
     </div>
 
-    <div className='mt-[7vh] flex flex-col justify-center p-4'>
+    <div className='mt-[5vh] flex flex-col justify-center p-4'>
       <div className='mx-20 flex justify-center text-3xl'>
         <ul className='flex gap-14'>
           <Link
@@ -202,6 +204,15 @@ const ContactFormWrapper = () => (
           </Link>
         </ul>
       </div>
+    </div>
+    <div className='mx-auto mt-6 flex justify-center'>
+      <Link
+        href='/HarrisonDanielResume.pdf'
+        target='_blank'
+        className='flex flex-row items-center gap-2 rounded-md bg-amber-600 px-2 py-1 text-lg font-bold text-neutral-900'>
+        <BiDownload />
+        Resume
+      </Link>
     </div>
   </div>
 );
