@@ -119,7 +119,7 @@ export default function Work() {
               Visit Site
             </Link>
           </div>
-          <div className='mb-4 flex flex-wrap justify-start'>
+          <div className='mb-40 flex flex-wrap justify-start'>
             {[
               'HTML',
               'CSS',
@@ -185,7 +185,7 @@ export default function Work() {
               Visit Site
             </Link>
           </div>
-          <div className='mb-4 flex flex-wrap justify-start'>
+          <div className='mb-40 flex flex-wrap justify-start'>
             {[
               'HTML',
               'CSS',

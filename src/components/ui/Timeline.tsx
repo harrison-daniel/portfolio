@@ -26,7 +26,7 @@ export const Timeline = ({ data }) => {
     <div
       className='w-full bg-white font-sans dark:bg-neutral-950 md:px-10'
       ref={containerRef}>
-      <div className='mx-auto flex max-w-7xl justify-center px-4 py-20 md:px-8 lg:px-10'>
+      <div className='mx-auto flex max-w-7xl justify-center px-4 py-14 pt-24 md:px-8 lg:px-10'>
         <h2 className='mb-4 max-w-4xl text-center text-3xl font-bold text-black dark:text-white md:text-5xl'>
           My Work
         </h2>
@@ -34,7 +34,7 @@ export const Timeline = ({ data }) => {
           Here&apos;s a timeline of my journey.
         </p> */}
       </div>
-      <div ref={ref} className='relative mx-auto max-w-7xl pb-56'>
+      <div ref={ref} className='relative mx-auto mb-44 max-w-7xl'>
         {data.map((item, index) => (
           <div
             key={index}
@@ -52,7 +52,7 @@ export const Timeline = ({ data }) => {
               <h3 className='mb-4 block text-left text-2xl font-bold text-neutral-500 dark:text-neutral-500 md:hidden'>
                 {item.title}
               </h3>
-              {item.content}{' '}
+              {item.content}
             </div>
           </div>
         ))}
