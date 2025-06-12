@@ -22,15 +22,12 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
-  // Also supported by less commonly used
-  // interactiveWidget: 'resizes-visual',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       {/* <body className={poppins.className}> */}
-
       <body className={inter.className}>
         <BackgroundImage />
         <Navbar />

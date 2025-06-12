@@ -24,12 +24,10 @@ const Tag = ({ tag }) => (
   </span>
 );
 
-// The modal-like expanded image functionality
 const ImageModal = ({ imageSrc, onClose }) => (
   <AnimatePresence>
     {imageSrc && (
       <>
-        {/* Overlay */}
         <motion.div
           className='fixed inset-0 z-40 bg-black bg-opacity-50'
           initial={{ opacity: 0 }}
@@ -37,7 +35,7 @@ const ImageModal = ({ imageSrc, onClose }) => (
           exit={{ opacity: 0 }}
           onClick={onClose}
         />
-        {/* Expanded Image */}
+
         <motion.div
           className='fixed inset-0 z-50 flex items-center justify-center'
           initial={{ scale: 0.8, opacity: 0 }}
