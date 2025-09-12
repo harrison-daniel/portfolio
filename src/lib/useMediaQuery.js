@@ -1,19 +1,27 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 
 const useMediaQuery = (query) => {
   const [matches, setMatches] = useState(false);
 
   useEffect(() => {
     const media = window.matchMedia(query);
-    if (media.matches !== matches) {
-      setMatches(media.matches);
-    }
-    const listener = () => setMatches(media.matches);
-    media.addEventListener('change', listener);
-    return () => media.removeEventListener('change', listener);
-  }, [matches, query]);
+    setMatches(media.matches);
+
+    let timeoutId;
+    const debouncedListener = (e) => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => setMatches(e.matches), 150); // 150ms delay
+    };
+
+    media.addEventListener('change', debouncedListener);
+
+    return () => {
+      media.removeEventListener('change', debouncedListener);
+      clearTimeout(timeoutId);
+    };
+  }, [query]);
 
   return matches;
 };

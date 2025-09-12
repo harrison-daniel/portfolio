@@ -2,34 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-  scrollbar-width: none;
-  scroll-behavior: smooth;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-}
-
-body {
-  -ms-overflow-style: none;
-}
-
-body::-webkit-scrollbar {
-  display: none;
-}
-
-.fancy {
-  @supports (background-clip: text) or (-webkit-background-clip: text) {
-    background-image: url('../../public/assets/images/circuit-gold-green-close-dark.png');
-    background-size: 50% auto;
-    background-position: center;
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
+::selection {
+  background: #10b981;
+  color: white;
 }
 
 .active {
@@ -63,15 +38,3 @@ textarea {
 .grecaptcha-badge {
   visibility: hidden;
 }
-
-/* .background-overlay {
-  transition: opacity 0.4s ease;
-}
-
-.background-overlay.visible {
-  opacity: 1;
-}
-
-.background-overlay.hidden {
-  opacity: 0;
-} */

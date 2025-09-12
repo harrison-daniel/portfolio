@@ -40,27 +40,36 @@ export default function DesktopNavbar() {
       <div>
         <ul className='hidden items-center md:flex'>
           <li
-            className={`ml-10 text-base font-semibold uppercase hover:text-emerald-700 ${
-              activeSection === '/'
-                ? 'border-b border-b-emerald-700 text-emerald-700'
+            className={`ml-10 text-base font-semibold uppercase hover:text-emerald-950 ${
+              activeSection === 'home'
+                ? 'border-b border-b-emerald-950 text-emerald-950'
                 : ''
             }`}>
-            <Link href='/'>Home</Link>
+            <Link href='/#home'>Home</Link>
           </li>
 
           <li
-            className={`ml-10 text-base font-semibold uppercase hover:text-emerald-700 ${
+            className={`ml-10 text-base font-semibold uppercase hover:text-emerald-950 ${
+              activeSection === 'about'
+                ? 'border-b border-b-emerald-950 text-emerald-950'
+                : ''
+            }`}>
+            <Link href='/#about'>About</Link>
+          </li>
+
+          <li
+            className={`ml-10 text-base font-semibold uppercase hover:text-emerald-950 ${
               activeSection === 'work'
-                ? 'border-b border-b-emerald-700 text-emerald-700'
+                ? 'border-b border-b-emerald-950 text-emerald-950'
                 : ''
             }`}>
             <Link href='/#work'>My Work</Link>
           </li>
 
           <li
-            className={`ml-10 text-base font-semibold uppercase hover:text-emerald-700 ${
+            className={`ml-10 text-base font-semibold uppercase hover:text-emerald-950 ${
               activeSection === 'contact'
-                ? 'border-b border-b-emerald-700 text-emerald-700'
+                ? 'border-b border-b-emerald-950 text-emerald-950'
                 : ''
             }`}>
             <Link href='/#contact'>Contact</Link>
@@ -69,7 +78,7 @@ export default function DesktopNavbar() {
             <Link
               href='/HarrisonDanielResume.pdf'
               target='_blank'
-              className='flex flex-row items-center gap-2 rounded-md bg-amber-600 px-2 py-1 text-neutral-900'>
+              className='flex flex-row items-center gap-2 rounded-md border border-black px-2 py-1 text-lg font-bold text-neutral-900'>
               <BiDownload />
               Resume
             </Link>

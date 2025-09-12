@@ -9,10 +9,12 @@ import HdLogo1 from '../../public/assets/images/hd-logo-1.png';
 import { BiDownload } from 'react-icons/bi';
 
 const MOBILE_NAV_ITEMS = [
-  { id: 0, navTitle: 'Home', href: '/', activeSection: '/' },
-  { id: 1, navTitle: 'My Work', href: '/#work', activeSection: 'work' },
-  { id: 2, navTitle: 'Contact', href: '/#contact', activeSection: 'contact' },
-  { id: 3, navTitle: '', href: '/HarrisonDanielResume.pdf', newTab: true },
+  { id: 0, navTitle: 'Home', href: '/#home', activeSection: 'home' },
+  { id: 1, navTitle: 'About', href: '/#about', activeSection: 'about' },
+
+  { id: 2, navTitle: 'My Work', href: '/#work', activeSection: 'work' },
+  { id: 3, navTitle: 'Contact', href: '/#contact', activeSection: 'contact' },
+  { id: 4, navTitle: '', href: '/HarrisonDanielResume.pdf', newTab: true },
 ];
 
 export default function MobileNavbar() {
@@ -254,7 +256,7 @@ export default function MobileNavbar() {
             {animations.lines.map((_, index) => (
               <motion.div
                 key={index}
-                className='line bg-emerald-800'
+                className='line bg-emerald-950'
                 style={{ height: lines.size }}
                 variants={animations.lines[index]}
                 initial='initial'
@@ -283,7 +285,7 @@ export default function MobileNavbar() {
               {animations.lines.map((_, index) => (
                 <motion.div
                   key={index}
-                  className='line bg-emerald-800'
+                  className='line bg-emerald-950'
                   style={{ height: lines.size }}
                   variants={animations.lines[index]}
                   initial='initial'
@@ -307,7 +309,7 @@ export default function MobileNavbar() {
                     <Link
                       href='/HarrisonDanielResume.pdf'
                       target='_blank'
-                      className='flex flex-row items-center gap-2 rounded-md bg-amber-600 px-2 py-1 text-neutral-900'>
+                      className='flex flex-row items-center gap-2 rounded-md border border-black px-2 py-1 text-lg font-bold text-neutral-900'>
                       <BiDownload />
                       Resume
                     </Link>

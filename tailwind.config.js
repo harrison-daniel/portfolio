@@ -24,6 +24,16 @@ module.exports = {
       },
     },
     extend: {
+      height: {
+        'screen-small': '100svh',
+        'screen-large': '100lvh',
+        'screen-dynamic': '100dvh',
+      },
+      minHeight: {
+        'screen-small': '100svh',
+        'screen-large': '100lvh',
+        'screen-dynamic': '100dvh',
+      },
       keyframes: {
         'accordion-down': {
           from: { height: '0' },
