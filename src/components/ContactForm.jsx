@@ -68,12 +68,9 @@ const ContactForm = () => {
   const [loading, setLoading] = useState(false);
   const [phoneDisplay, setPhoneDisplay] = useState('');
 
-  // Format phone number as user types
   const handlePhoneChange = (e) => {
-    // Remove all non-digits and limit to 10
     const input = e.target.value.replace(/\D/g, '').slice(0, 10);
 
-    // Format the display
     let formatted = '';
     if (input.length > 0) {
       if (input.length <= 3) {
@@ -86,7 +83,6 @@ const ContactForm = () => {
     }
 
     setPhoneDisplay(formatted);
-    // Store only digits in the form
     setValue('phone', input, { shouldValidate: true });
   };
 
@@ -124,12 +120,12 @@ const ContactForm = () => {
       } else {
         toast.success("Message sent successfully! I'll get back to you soon.");
         reset();
-        setPhoneDisplay(''); // Clear phone display
+        setPhoneDisplay('');
       }
     } catch (error) {
       console.error('Form submission error:', error);
       toast.error(
-        'Failed to send message. Please try again or email directly.',
+        'Failed to send message. Please try again or email  directly.',
       );
     } finally {
       setLoading(false);
@@ -150,6 +146,9 @@ const ContactForm = () => {
             <input
               id='name'
               type='text'
+              tabIndex={1}
+              enterKeyHint='next'
+              autoComplete='name'
               {...register('name')}
               placeholder='John Doe'
               className={`mt-1 w-full rounded border p-1 transition-all duration-200 ${
@@ -177,8 +176,12 @@ const ContactForm = () => {
             <input
               id='email'
               type='email'
-              {...register('email')}
+              tabIndex={2}
+              enterKeyHint='next'
+              inputMode='email'
+              autoComplete='email'
               placeholder='john.doe@example.com'
+              {...register('email')}
               className={`mt-1 w-full rounded border p-1 transition-all duration-200 ${
                 errors.email ? 'border-red-500' : 'border-gray-300'
               } ${
@@ -196,7 +199,7 @@ const ContactForm = () => {
             )}
           </div>
 
-          {/* Phone Field with Auto-Format */}
+          {/* Phone Field  */}
           <div className='mb-3'>
             <label htmlFor='phone' className='block text-base text-gray-700'>
               Phone (optional)
@@ -204,10 +207,14 @@ const ContactForm = () => {
             <input
               id='phone'
               type='tel'
+              tabIndex={3}
+              enterKeyHint='next'
+              inputMode='tel'
+              autoComplete='tel'
               value={phoneDisplay}
               onChange={handlePhoneChange}
               placeholder='(555) 123-4567'
-              maxLength={14} // Formatted length: (123) 456-7890
+              maxLength={14}
               className={`mt-1 w-full rounded border p-1 transition-all duration-200 ${
                 errors.phone ? 'border-red-500' : 'border-gray-300'
               } ${
@@ -223,7 +230,7 @@ const ContactForm = () => {
                 {errors.phone.message}
               </span>
             )}
-            <span className='text-xs text-gray-500'>US phone numbers only</span>
+            {/* <span className='text-xs text-gray-500'>US phone numbers only</span> */}
           </div>
 
           {/* Message Field */}
@@ -233,8 +240,10 @@ const ContactForm = () => {
             </label>
             <textarea
               id='message'
+              tabIndex={4}
+              enterKeyHint='send'
               {...register('message')}
-              placeholder='Tell me about your project or inquiry...'
+              placeholder='Your message here'
               className={`mt-1 w-full rounded border p-1 transition-all duration-200 ${
                 errors.message ? 'border-red-500' : 'border-gray-300'
               } ${
@@ -257,7 +266,7 @@ const ContactForm = () => {
           <div className='flex justify-center'>
             <button
               type='submit'
-              className={`w-full rounded-lg bg-emerald-950 p-3 font-medium text-white transition-all duration-200 ${
+              className={`submit-button w-full rounded-lg bg-emerald-950 p-3 font-medium text-white transition-all duration-200 ${
                 loading
                   ? 'cursor-not-allowed opacity-50'
                   : 'hover:bg-emerald-900 hover:shadow-lg active:scale-95 active:transform'
@@ -266,6 +275,24 @@ const ContactForm = () => {
               {loading ? 'Processing...' : 'Send Message'}
             </button>
           </div>
+          <p className='mt-5 text-center text-xs text-gray-500'>
+            Protected by reCAPTCHA •
+            <a
+              href='https://policies.google.com/privacy'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='underline hover:text-gray-700'>
+              Privacy
+            </a>{' '}
+            •
+            <a
+              href='https://policies.google.com/terms'
+              target='_blank'
+              rel='noopener noreferrer'
+              className='underline hover:text-gray-700'>
+              Terms
+            </a>
+          </p>
         </form>
       </div>
     </>
@@ -274,16 +301,21 @@ const ContactForm = () => {
 
 const ContactFormWrapper = () => (
   <div
-    className='relative flex flex-col pb-24 pt-48 md:justify-center md:align-middle'
+    className='relative flex flex-col md:justify-center md:align-middle'
     id='contact'>
     <div>
-      <h1 className='mb-2 flex justify-center py-1 text-3xl font-bold text-black sm:text-4xl md:mb-12 md:text-5xl'>
+      <h1 className='mb-12 flex justify-center py-1 text-3xl font-bold text-black sm:text-4xl md:mb-12 md:text-5xl'>
         Contact Me
       </h1>
     </div>
     <div>
       <GoogleReCaptchaProvider
-        reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}>
+        reCaptchaKey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}
+        scriptProps={{
+          async: true,
+          defer: true,
+          appendTo: 'body',
+        }}>
         <ContactForm />
       </GoogleReCaptchaProvider>
     </div>
@@ -304,7 +336,7 @@ const ContactFormWrapper = () => (
         </ul>
       </div>
     </div>
-    <div className='mx-auto mt-6 flex justify-center'>
+    <div className='mx-auto flex justify-center'>
       <Link
         href='/HarrisonDanielResume.pdf'
         target='_blank'

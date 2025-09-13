@@ -21,8 +21,9 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang='en' className=''>
-      <body className={inter.className}>
+    <html lang='en'>
+      <body
+        className={`${inter.className} pb-footer bg-gray-100 text-neutral-900 dark:bg-neutral-950 dark:text-white`}>
         <BackgroundImage />
         <Navbar />
         <main>{children}</main>

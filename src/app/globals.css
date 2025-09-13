@@ -2,6 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --nav-h: 90px;
+}
+
+html {
+  scroll-padding-top: var(--nav-h);
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  overscroll-behavior-y: none;
+}
+
 ::selection {
   background: #10b981;
   color: white;
@@ -37,4 +51,19 @@ textarea {
 
 .grecaptcha-badge {
   visibility: hidden;
+}
+
+@layer utilities {
+  .pb-footer {
+    --footer-pad: clamp(72px, 12svh, 144px);
+    padding-bottom: var(--footer-pad);
+  }
+
+  @supports (padding-bottom: max(1px, 1px)) {
+    .pb-footer {
+      padding-bottom: calc(
+        env(safe-area-inset-bottom, 0px) + var(--footer-pad)
+      );
+    }
+  }
 }

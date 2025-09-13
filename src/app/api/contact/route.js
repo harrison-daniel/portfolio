@@ -1,6 +1,5 @@
 import nodemailer from 'nodemailer';
 
-//in-memory rate limiting
 const attempts = new Map();
 
 export async function POST(req) {
@@ -14,42 +13,62 @@ export async function POST(req) {
       );
     }
 
-    // (5 requests per hour per IP)
-    const ip =
-      req.headers.get('x-forwarded-for') ||
-      req.headers.get('x-real-ip') ||
-      'unknown';
-    const now = Date.now();
-    const userAttempts = attempts.get(ip) || [];
-    const recentAttempts = userAttempts.filter((time) => now - time < 3600000); // 1 hour window
-
-    if (recentAttempts.length >= 5) {
-      return Response.json(
-        { message: 'Too many attempts. Please try again later.' },
-        { status: 429 },
+    if (process.env.NODE_ENV === 'production') {
+      const ip = req.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown';
+      const now = Date.now();
+      const userAttempts = attempts.get(ip) || [];
+      const recentAttempts = userAttempts.filter(
+        (time) => now - time < 3600000,
       );
+
+      if (recentAttempts.length >= 10) {
+        return Response.json(
+          { message: 'Too many attempts. Please try again in an hour.' },
+          { status: 429 },
+        );
+      }
+
+      attempts.set(ip, [...recentAttempts, now]);
     }
 
-    attempts.set(ip, [...recentAttempts, now]);
+    let recaptchaData = { score: 'N/A' };
 
-    // const recaptchaResponse = await fetch(
-    //   `https://www.google.com/recaptcha/api/siteverify`,
-    //   {
-    //     method: 'POST',
-    //     headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    //     body: `secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${recaptchaToken}`,
-    //   },
-    // );
+    if (process.env.NODE_ENV === 'development') {
+      console.log('Skipping reCAPTCHA in development');
+    } else {
+      const verifyUrl = new URL(
+        'https://www.google.com/recaptcha/api/siteverify',
+      );
+      verifyUrl.searchParams.append('secret', process.env.RECAPTCHA_SECRET_KEY);
+      verifyUrl.searchParams.append('response', recaptchaToken);
 
-    // const recaptchaData = await recaptchaResponse.json();
+      const recaptchaResponse = await fetch(verifyUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
 
-    // if (!recaptchaData.success || recaptchaData.score < 0.5) {
-    //   console.log('ReCAPTCHA failed:', recaptchaData);
-    //   return Response.json(
-    //     { message: 'Security verification failed' },
-    //     { status: 400 },
-    //   );
-    // }
+      recaptchaData = await recaptchaResponse.json();
+
+      console.log('reCAPTCHA response:', recaptchaData);
+
+      if (!recaptchaData.success) {
+        console.error('reCAPTCHA errors:', recaptchaData['error-codes']);
+        return Response.json(
+          { message: 'Security verification failed' },
+          { status: 400 },
+        );
+      }
+
+      if (recaptchaData.score < 0.3) {
+        console.log('Low score:', recaptchaData.score);
+        return Response.json(
+          { message: 'Request appears automated' },
+          { status: 400 },
+        );
+      }
+    }
 
     if (
       [name, email, message].some(
@@ -72,14 +91,6 @@ export async function POST(req) {
       },
     });
 
-    // const transporter = nodemailer.createTransport({
-    //   service: 'gmail',
-    //   auth: {
-    //     user: process.env.EMAIL_USER,
-    //     pass: process.env.EMAIL_PASS,
-    //   },
-    // });
-
     const mailOptions = {
       from: process.env.EMAIL_USER,
       to: process.env.RECIPIENT_EMAIL,
@@ -96,7 +107,7 @@ ${message}
 
 ---
 Sent from your portfolio contact form
-`,
+reCAPTCHA Score: ${recaptchaData.score || 'N/A'}`,
       html: `
         <h2>New Portfolio Contact</h2>
         <table style="width: 100%; max-width: 600px;">
@@ -120,6 +131,7 @@ Sent from your portfolio contact form
         <hr style="margin-top: 30px;">
         <p style="color: #666; font-size: 12px;">
           Sent from your portfolio contact form<br>
+          reCAPTCHA Score: ${recaptchaData.score || 'N/A'}
         </p>
       `,
     };
@@ -139,81 +151,3 @@ Sent from your portfolio contact form
     );
   }
 }
-//Sent from your portfolio contact form ReCAPTCHA Score: ${recaptchaData.score}`,
-//  ReCAPTCHA Score: ${recaptchaData.score}
-
-// import nodemailer from 'nodemailer';
-// import axios from 'axios';
-
-// export async function POST(req) {
-//   const { name, email, phone, message, recaptchaToken } = await req.json();
-
-//   // Verify reCAPTCHA
-//   const secret = process.env.RECAPTCHA_SECRET_KEY;
-//   const response = await axios.post(
-//     `https://www.google.com/recaptcha/api/siteverify`,
-//     null,
-//     {
-//       params: {
-//         secret: secret,
-//         response: recaptchaToken,
-//       },
-//     },
-//   );
-
-//   if (!response.data.success) {
-//     return new Response(
-//       JSON.stringify({ message: 'reCAPTCHA verification failed' }),
-//       {
-//         status: 400,
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//       },
-//     );
-//   }
-
-//   const transporter = nodemailer.createTransport({
-//     host: 'smtp.gmail.com',
-//     port: 465,
-//     secure: true,
-//     auth: {
-//       user: process.env.EMAIL_USER,
-//       pass: process.env.EMAIL_PASS,
-//     },
-//   });
-
-//   const mailOptions = {
-//     from: process.env.EMAIL_USER,
-//     to: process.env.RECIPIENT_EMAIL,
-//     subject: `New Pfolio Message from ${name}!`,
-//     text: `You have received a new message from your website contact form. Here are the details:
-//     \nEmail: ${email}
-//     Name: ${name}
-//     Phone: ${phone || 'N/A'}
-//     \nMessage: ${message}`,
-//   };
-
-//   try {
-//     await transporter.sendMail(mailOptions);
-//     return new Response(
-//       JSON.stringify({ message: 'Email sent successfully' }),
-//       {
-//         status: 200,
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//       },
-//     );
-//   } catch (error) {
-//     return new Response(
-//       JSON.stringify({ message: 'Error sending email', error }),
-//       {
-//         status: 500,
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//       },
-//     );
-//   }
-// }

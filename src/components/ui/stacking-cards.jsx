@@ -51,7 +51,7 @@ export const StackingCardItem = ({
   const top = topPosition ?? `${5 + index * 3}%`;
 
   return (
-    <div className={cn('sticky top-0 h-full', className)} {...props}>
+    <div className={cn('sticky top-20 h-full', className)} {...props}>
       <motion.div className='relative h-full origin-top' style={{ top, scale }}>
         {children}
       </motion.div>

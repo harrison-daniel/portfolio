@@ -9,16 +9,18 @@ const fadeUp = {
 
 export default function About() {
   return (
-    <motion.section
+    <motion.div
       initial='hidden'
       whileInView='visible'
       viewport={{ once: true, amount: 0.3 }}
-      className='flex flex-col justify-center py-24'>
-      <h2 className='text-center text-3xl font-bold md:text-4xl'>About Me</h2>
+      className='flex flex-col justify-center'>
+      <h2 className='pb-12 text-center text-3xl font-bold md:text-4xl'>
+        About Me
+      </h2>
 
       <motion.p
         variants={fadeUp}
-        className='mx-auto mt-6 flex max-w-3xl justify-center text-center text-neutral-800'>
+        className='mx-auto flex max-w-3xl justify-center text-center text-neutral-800'>
         Full-stack developer with 5+ years in the SaaS industry across multiple
         verticals. My approach is to bridge the technical depth with customer
         perspective, so that the applications I build are intuitive and
@@ -35,6 +37,6 @@ export default function About() {
           </motion.div>
         ))}
       </div>
-    </motion.section>
+    </motion.div>
   );
 }

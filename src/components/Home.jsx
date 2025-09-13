@@ -25,12 +25,12 @@ const landingItemVariants = {
 
 export default function Home() {
   return (
-    <div id='/#home' className='flex items-center justify-center px-4'>
+    <div className='flex items-center justify-center px-4 pt-[5rem]'>
       <motion.div
         initial='hidden'
         animate='visible'
         variants={landingContainerVariants}
-        className='mx-auto flex max-w-4xl flex-col justify-center rounded-3xl px-6 py-20 text-center'>
+        className='mx-auto flex max-w-4xl flex-col justify-center rounded-3xl px-6 text-center'>
         <div className='mx-auto inline-block'>
           <motion.h1
             variants={landingItemVariants}
@@ -90,7 +90,7 @@ export default function Home() {
         </div>
         <motion.div
           variants={landingItemVariants}
-          className='mt-2 flex flex-col items-center gap-4 sm:flex-row sm:justify-center'>
+          className='mt-4 flex flex-row items-center justify-center gap-4'>
           <Link
             href='#about'
             className='group inline-flex items-center gap-2 rounded-md px-3 py-2 font-semibold leading-none text-black outline-none ring-1 ring-transparent transition-all duration-200 hover:bg-black/5 hover:text-black/90 focus-visible:ring-2 focus-visible:ring-black/30'>

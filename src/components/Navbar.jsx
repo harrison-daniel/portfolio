@@ -10,7 +10,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className='sticky top-0 z-40 w-full bg-gray-100 px-[2.5vw] py-1 shadow-xl'>
+      <div className='sticky top-0 z-40 w-full bg-gray-100 px-[2.5vw] py-1 pt-[env(safe-area-inset-top)] shadow-xl'>
         {isMobile ? <MobileNavbar /> : <DesktopNavbar />}
       </div>
     </>

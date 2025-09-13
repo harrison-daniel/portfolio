@@ -11,7 +11,6 @@ import { BiDownload } from 'react-icons/bi';
 const MOBILE_NAV_ITEMS = [
   { id: 0, navTitle: 'Home', href: '/#home', activeSection: 'home' },
   { id: 1, navTitle: 'About', href: '/#about', activeSection: 'about' },
-
   { id: 2, navTitle: 'My Work', href: '/#work', activeSection: 'work' },
   { id: 3, navTitle: 'Contact', href: '/#contact', activeSection: 'contact' },
   { id: 4, navTitle: '', href: '/HarrisonDanielResume.pdf', newTab: true },
@@ -268,7 +267,7 @@ export default function MobileNavbar() {
       </div>
       <motion.div
         variants={mobileMenuVariant}
-        className='fixed right-0 top-0 z-50 flex h-full w-full flex-col gap-6 bg-neutral-50'>
+        className='fixed right-0 top-0 z-50 flex h-full w-full flex-col gap-6 bg-gray-100'>
         <div className='z-50 flex w-full items-center justify-end p-4'>
           <motion.div
             initial={false}
