@@ -8,6 +8,8 @@ import { ExternalLink } from 'lucide-react';
 import PicknFlickHome from '../../public/assets/images/picknflick-home.png';
 import GitPubHome from '../../public/assets/images/gitpub-dark.png';
 import PasswordGeneratorHome from '../../public/assets/images/password-generator-home.png';
+import { motion } from 'framer-motion';
+import { VIDEO_URLS } from '../lib/videoUrls';
 
 function ModalPortal({ children }) {
   if (typeof window === 'undefined') return null;
@@ -31,6 +33,8 @@ export default function Work() {
   const mediaBox =
     'group relative mt-4 w-full max-w-[560px] sm:max-w-[620px] mx-auto ' +
     'aspect-[5/4] sm:aspect-[4/3] overflow-hidden rounded-lg';
+
+  const videoClasses = 'h-full w-full object-cover';
 
   useEffect(() => {
     if (!openVideo) return;
@@ -88,19 +92,19 @@ export default function Work() {
     switch (openVideo) {
       case 'pf':
         return {
-          src: 'https://gywerkftomqz071v.public.blob.vercel-storage.com/PicknFlick%20Video%20Small.mp4',
+          src: VIDEO_URLS.picknflick.src,
           poster: PicknFlickHome.src,
           label: 'Pick n Flick demo video',
         };
       case 'gp':
         return {
-          src: 'https://gywerkftomqz071v.public.blob.vercel-storage.com/GitPub%20Video%20mobile%20small.mp4',
+          src: VIDEO_URLS.gitpub.src,
           poster: GitPubHome.src,
           label: 'GitPub demo video',
         };
       case 'pg':
         return {
-          src: 'https://gywerkftomqz071v.public.blob.vercel-storage.com/Password%20Generator%20Video%20Small.mp4',
+          src: VIDEO_URLS.passwordGenerator.src,
           poster: PasswordGeneratorHome.src,
           label: 'Password Generator demo video',
         };
@@ -115,10 +119,14 @@ export default function Work() {
         totalCards={3}
         scaleMultiplier={0.03}
         className='relative mx-auto max-w-3xl'>
-        <div className='relative z-10 flex w-full items-center justify-center'>
-          <h2 className='pb-12 text-center text-3xl font-bold md:text-4xl'>
+        <div className='z-10 flex w-full flex-col items-center justify-center'>
+          <h2 className='pb-0 text-center text-3xl font-bold md:text-4xl'>
             My Work
           </h2>
+          {/* <motion.span
+            // variants={landingItemVariants}
+            className='mx-auto my-4 block h-0.5 w-[15%] max-w-4xl bg-black'
+          /> */}
         </div>
 
         {/* ---------- CARD 1 ---------- */}
@@ -147,8 +155,8 @@ export default function Work() {
               {/* --------- VIDEO START --------- */}
               <div className={mediaBox}>
                 <video
-                  className='h-full w-full object-cover'
-                  src='https://gywerkftomqz071v.public.blob.vercel-storage.com/PicknFlick%20Video%20Small.mp4'
+                  className={videoClasses}
+                  src={VIDEO_URLS.picknflick.src}
                   poster={PicknFlickHome.src}
                   playsInline
                   muted
@@ -166,7 +174,6 @@ export default function Work() {
                   }}
                 />
               </div>
-
               {/* --------- VIDEO END --------- */}
 
               {/* Tags */}
@@ -244,8 +251,8 @@ export default function Work() {
 
               <div className={mediaBox}>
                 <video
-                  className='h-full w-full object-cover'
-                  src='https://gywerkftomqz071v.public.blob.vercel-storage.com/GitPub%20Video%20mobile%20small.mp4'
+                  className={videoClasses}
+                  src={VIDEO_URLS.gitpub.src}
                   poster={GitPubHome.src}
                   playsInline
                   muted
@@ -325,12 +332,20 @@ export default function Work() {
                   Custom, unique password generator with options for length and
                   character types.
                 </p>
+                <p className='mb-4 text-xs text-neutral-800 dark:text-neutral-200 md:text-sm'>
+                  <span className='font-bold'>Front-end: </span>
+                  HTML, CSS, JavaScript with responsive design.
+                </p>
+                <p className='text-xs text-neutral-800 dark:text-neutral-200 md:text-sm'>
+                  <span className='font-bold'>Back-end: </span>
+                  GitHub Pages for static hosting and deployment.
+                </p>
               </header>
               {/* --------- VIDEO --------- */}
               <div className={mediaBox}>
                 <video
-                  className='h-full w-full object-cover'
-                  src='https://gywerkftomqz071v.public.blob.vercel-storage.com/Password%20Generator%20Video%20Small.mp4'
+                  className={videoClasses}
+                  src={VIDEO_URLS.passwordGenerator.src}
                   poster={PasswordGeneratorHome.src}
                   playsInline
                   muted

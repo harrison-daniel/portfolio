@@ -25,7 +25,7 @@ const landingItemVariants = {
 
 export default function Home() {
   return (
-    <div className='flex items-center justify-center px-4 pt-[5rem]'>
+    <div className='flex items-center justify-center px-4'>
       <motion.div
         initial='hidden'
         animate='visible'
@@ -47,43 +47,48 @@ export default function Home() {
             className='text-muted-foreground my-4 text-2xl font-semibold md:text-3xl'>
             Full Stack Developer
           </motion.h2>
-          <motion.h3
-            variants={landingItemVariants}
-            className='text-muted-foreground my-4 text-lg text-slate-800 md:text-xl'>
-            Building approachable <br /> and reliable web apps
-          </motion.h3>
 
           <motion.div
             variants={landingItemVariants}
             className='flex justify-center py-4'>
             <div className='flex justify-center text-3xl'>
               <ul className='flex gap-14'>
-                <Link
-                  href='https://www.linkedin.com/in/harrisondaniel/'
-                  target='_blank'
-                  className='transition-transform duration-200 hover:scale-110'
-                  aria-label='LinkedIn Profile'>
-                  <AiFillLinkedin />
-                </Link>
-                <Link
-                  href='https://github.com/harrison-daniel'
-                  target='_blank'
-                  className='transition-transform duration-200 hover:scale-110'
-                  aria-label='GitHub Profile'>
-                  <AiFillGithub />
-                </Link>
-                <Link
-                  href='mailto:harrisonhjd@gmail.com'
-                  className='transition-transform duration-200 hover:scale-110'
-                  aria-label='Send Email'>
-                  <BsFillEnvelopeFill />
-                </Link>
-                <Link
-                  href='tel:+8045199827'
-                  className='transition-transform duration-200 hover:scale-110'
-                  aria-label='Call Phone'>
-                  <BsFillTelephoneFill />
-                </Link>
+                <li>
+                  <Link
+                    href='https://www.linkedin.com/in/harrisondaniel/'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='transition-transform duration-200 hover:scale-110'
+                    aria-label='LinkedIn Profile'>
+                    <AiFillLinkedin />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href='https://github.com/harrison-daniel'
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='transition-transform duration-200 hover:scale-110'
+                    aria-label='GitHub Profile'>
+                    <AiFillGithub />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href='mailto:harrisonhjd@gmail.com'
+                    className='transition-transform duration-200 hover:scale-110'
+                    aria-label='Send Email'>
+                    <BsFillEnvelopeFill />
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href='tel:+8045199827'
+                    className='transition-transform duration-200 hover:scale-110'
+                    aria-label='Call Phone'>
+                    <BsFillTelephoneFill />
+                  </Link>
+                </li>
               </ul>
             </div>
           </motion.div>

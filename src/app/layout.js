@@ -17,18 +17,21 @@ export const viewport = {
   initialScale: 1,
   maximumScale: 1,
   userScalable: false,
+  themeColor: '#f3f4f6',
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang='en'>
       <body
-        className={`${inter.className} pb-footer bg-gray-100 text-neutral-900 dark:bg-neutral-950 dark:text-white`}>
-        <BackgroundImage />
-        <Navbar />
-        <main>{children}</main>
-        <Toaster position='top-right' richColors closeButton />
-        <Footer />
+        className={`${inter.className} min-h-full bg-gray-100 pb-20 text-neutral-900 dark:bg-neutral-950 dark:text-white`}>
+        <div className='relative min-h-full'>
+          <BackgroundImage />
+          <Navbar />
+          <main className='pt-[var(--nav-h)]'>{children}</main>
+          <Toaster position='top-right' richColors closeButton />
+          <Footer />
+        </div>
       </body>
     </html>
   );
