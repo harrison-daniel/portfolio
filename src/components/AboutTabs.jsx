@@ -71,7 +71,6 @@ function useInViewAutoplay(ref, enabled = true) {
 
 export default function AboutTabs() {
   const prefersReduced = useReducedMotion();
-  const [active, setActive] = useState('tools');
 
   const tabs = [
     { id: 'now', label: 'Now' },
@@ -79,6 +78,8 @@ export default function AboutTabs() {
     { id: 'home_lab', label: 'Home Lab' },
     { id: 'drone', label: 'Drone' },
   ];
+
+  const [active, setActive] = useState(tabs[0].id);
 
   const DronePanel = () => {
     const videoRef =
@@ -154,7 +155,7 @@ export default function AboutTabs() {
             I use VS Code as my primary IDE with Prettier, Copilot, and
             Intellisense. I also use the Claude CLI via Git Bash for quick
             prompts and Github Actions for basic CI. <br /> <br />
-            For hosting, I use a mix of Vercel, AWS, and CloudFlare. Theme-wise
+            For hosting, I use a mix of Vercel, AWS, and CloudFlare.
           </p>
           <div className='mt-4 flex flex-wrap gap-2'>
             {[
@@ -178,20 +179,29 @@ export default function AboutTabs() {
             What I'm Building Now
           </h3>
           <p className='mt-2 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
-            Currently building a locally hosted automation hub that integrates
-            Philips Hue and LG webOS TV APIs to coordinate lighting and display
-            presets via a single action. Deployed on a Linux host with local
-            network control.
+            Home automation using Philips Hue smart bulbs and the LG TV webOS
+            API. <br />
+            <br />A single endpoint configures lighting and TV settings for
+            different contexts (movie night, daytime viewing, gaming).
+            Coordinates Hue brightness/color and LG TV picture modes
+            simultaneously instead of adjusting each separately. Built with a
+            local Python/FastAPI backend since all devices are on the same
+            network.
           </p>
           <ul className='mt-3 list-disc space-y-2 pl-5 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
             <li>API-based automation for coordinated device control</li>
           </ul>
           <div className='mt-4 flex flex-wrap gap-2'>
-            {['Philips Hue API', 'LG webOS API', 'Node.js', 'Linux'].map(
-              (t) => (
-                <Chip key={t}>{t}</Chip>
-              ),
-            )}
+            {[
+              'Philips Hue API',
+              'LG webOS API',
+              'Python',
+              'FastAPI',
+              'AWS Lambda',
+              'Terraform',
+            ].map((t) => (
+              <Chip key={t}>{t}</Chip>
+            ))}
           </div>
         </PanelCard>
       ),
@@ -199,22 +209,19 @@ export default function AboutTabs() {
       home_lab: (
         <PanelCard>
           <h3 className='text-base font-bold text-neutral-900 dark:text-white'>
-            Home Lab & Systems
+            Home Lab
           </h3>
           <p className='mt-2 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
-            Running a Ubiquiti Unifi network (Cloud Gateway Ultra, Switch Lite
-            PoE 8, dual U7 Pro APs) on a DeskPi mini rack. <br /> <br /> Current
-            focus:
+            UniFi network — Cloud Gateway Ultra, Switch Lite 8 PoE, two U7 Pro
+            APs. VLANs segment IoT, main, and guest traffic. Adding monitoring
+            via Grafana.
           </p>
           <ul className='mt-3 list-disc space-y-2 pl-5 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
             <li>
               Expanding local services on Raspberry Pi for lightweight system
               workloads
             </li>
-            <li>
-              Evaluating self-hosted LLMs for local inference and early
-              experimentation with task automation
-            </li>
+            <li>Exploring self-hosted LLM options for local automation.</li>
           </ul>
           <div className='mt-4 flex flex-wrap gap-2'>
             {['Ubiquiti Unifi', 'VLANs', 'Raspberry Pi', 'Docker'].map((t) => (
