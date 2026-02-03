@@ -42,12 +42,6 @@ export default function Home() {
             className='mx-auto my-4 block h-0.5 w-[84%] bg-black'
           />
 
-          <motion.h2
-            variants={landingItemVariants}
-            className='text-muted-foreground my-4 text-2xl font-semibold md:text-3xl'>
-            Full Stack Developer
-          </motion.h2>
-
           <motion.div
             variants={landingItemVariants}
             className='flex justify-center py-4'>

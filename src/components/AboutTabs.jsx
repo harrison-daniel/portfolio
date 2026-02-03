@@ -74,10 +74,10 @@ export default function AboutTabs() {
   const [active, setActive] = useState('tools');
 
   const tabs = [
-    { id: 'tools', label: 'Tools' },
     { id: 'now', label: 'Now' },
+    { id: 'tools', label: 'Tools' },
+    { id: 'home_lab', label: 'Home Lab' },
     { id: 'drone', label: 'Drone' },
-    { id: 'next', label: 'Next' },
   ];
 
   const DronePanel = () => {
@@ -96,9 +96,9 @@ export default function AboutTabs() {
                 ref={videoRef}
                 className='h-full w-full object-cover'
                 src={VIDEO_URLS.droneReel.src}
-                poster={
-                  VIDEO_URLS.droneReel.poster || '/drone/drone-poster.jpg'
-                }
+                // poster={
+                //   VIDEO_URLS.droneReel.poster || '/drone/drone-poster.jpg'
+                // }
                 playsInline
                 muted
                 loop
@@ -128,8 +128,8 @@ export default function AboutTabs() {
             <p className='mt-2 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
               I’m Part 107 certified. I fly a DJI Mini 3 Pro (48MP photos,
               4K/60fps video) and use Premiere Pro for editing and basic color
-              grading. I'm currently experimenting with automated flights paths
-              and simple mapping tools.
+              grading. I'm currently experimenting with automated flight path
+              software to capture repeatable shots and comparisons.
             </p>
 
             <div className='mt-4 flex flex-wrap gap-2'>
@@ -178,29 +178,49 @@ export default function AboutTabs() {
             What I'm Building Now
           </h3>
           <p className='mt-2 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
-            Right now I’m building a simple maintence tracker for my bike
-            (suspension, tuning, etc.) and cars, and experimenting with
-            different software for automated drone flight paths.
+            Currently building a locally hosted automation hub that integrates
+            Philips Hue and LG webOS TV APIs to coordinate lighting and display
+            presets via a single action. Deployed on a Linux host with local
+            network control.
           </p>
           <ul className='mt-3 list-disc space-y-2 pl-5 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
-            <li>Maintenance tracker (mountain bike + car)</li>
-            <li>Automated drone flight paths</li>
+            <li>API-based automation for coordinated device control</li>
           </ul>
+          <div className='mt-4 flex flex-wrap gap-2'>
+            {['Philips Hue API', 'LG webOS API', 'Node.js', 'Linux'].map(
+              (t) => (
+                <Chip key={t}>{t}</Chip>
+              ),
+            )}
+          </div>
         </PanelCard>
       ),
       drone: <DronePanel />,
-      next: (
+      home_lab: (
         <PanelCard>
           <h3 className='text-base font-bold text-neutral-900 dark:text-white'>
             Home Lab & Systems
           </h3>
+          <p className='mt-2 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
+            Running a Ubiquiti Unifi network (Cloud Gateway Ultra, Switch Lite
+            PoE 8, dual U7 Pro APs) on a DeskPi mini rack. <br /> <br /> Current
+            focus:
+          </p>
           <ul className='mt-3 list-disc space-y-2 pl-5 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
-            <li>Home lab upgrades (Raspberry Pi 5 + Unifi)</li>
-            <li>Local LLM (self-hosted)</li>
             <li>
-              Multi-agent orchestration (coordinating & routing LLM tasks)
+              Expanding local services on Raspberry Pi for lightweight system
+              workloads
+            </li>
+            <li>
+              Evaluating self-hosted LLMs for local inference and early
+              experimentation with task automation
             </li>
           </ul>
+          <div className='mt-4 flex flex-wrap gap-2'>
+            {['Ubiquiti Unifi', 'VLANs', 'Raspberry Pi', 'Docker'].map((t) => (
+              <Chip key={t}>{t}</Chip>
+            ))}
+          </div>
         </PanelCard>
       ),
     }),

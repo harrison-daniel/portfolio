@@ -9,7 +9,8 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   title: 'Harrison Daniel',
-  description: 'Full-stack developer portfolio',
+  description:
+    'Technical portfolio - IT administration, systems configuration, and web development.',
 };
 
 export const viewport = {

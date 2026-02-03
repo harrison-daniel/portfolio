@@ -21,9 +21,10 @@ export default function About() {
       <motion.p
         variants={fadeUp}
         className='mx-auto flex max-w-3xl flex-col justify-center text-center text-neutral-800'>
-        Full-stack developer with 5+ years in the SaaS industry across multiple
-        verticals. My approach is to bridge the technical depth with customer
-        perspective, so that the applications I build are intuitive and
+        Technical background spanning IT administration, SaaS systems
+        configuration, and full-stack web development. I specialize in
+        troubleshooting, optimization, and bridging technical depth with
+        customer perspective so that my applications are intuitive and
         functional.
       </motion.p>
     </motion.div>

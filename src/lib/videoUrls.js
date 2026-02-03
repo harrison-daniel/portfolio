@@ -17,7 +17,7 @@ export const VIDEO_URLS = {
   },
 
   droneReel: {
-    src: `${R2_BASE_URL}portfolio-drone-reel.mp4`,
+    src: `${R2_BASE_URL}portfolio-drone-reel-2026.mp4`,
     // poster: `${R2_BASE_URL}/drone-poster.jpg`,
   },
 

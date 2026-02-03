@@ -1,103 +1,98 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 const LoadingAnimation = ({
   isVisible,
   message = 'Processing your request...',
 }) => {
+  const canvasRef = useRef(null);
+
   useEffect(() => {
-    function setupPulsingGrid() {
-      const container = document.getElementById('modal-pulsing-grid');
-      if (!container) return;
+    if (!isVisible || !canvasRef.current) return;
 
-      container.innerHTML = '';
-      const canvas = document.createElement('canvas');
-      canvas.width = 120;
-      canvas.height = 120;
-      canvas.style.position = 'absolute';
-      canvas.style.left = '0';
-      canvas.style.top = '0';
-      container.appendChild(canvas);
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    const centerX = canvas.width / 2;
+    const centerY = canvas.height / 2;
 
-      const ctx = canvas.getContext('2d');
-      const centerX = canvas.width / 2;
-      const centerY = canvas.height / 2;
-      let time = 0;
-      let lastTime = 0;
+    let time = 0;
+    let lastTime = 0;
+    let animationId;
 
-      const gridSize = 4;
-      const spacing = 12;
-      const breathingSpeed = 0.6;
+    const gridSize = 4;
+    const spacing = 12;
+    const breathingSpeed = 0.6;
+    const maxDistance = (spacing * Math.sqrt(2) * (gridSize - 1)) / 2;
 
-      function animate(timestamp) {
-        if (!lastTime) lastTime = timestamp;
-        const deltaTime = timestamp - lastTime;
-        lastTime = timestamp;
-        time += deltaTime * 0.001;
+    function animate(timestamp) {
+      if (!lastTime) lastTime = timestamp;
+      const deltaTime = timestamp - lastTime;
+      lastTime = timestamp;
+      time += deltaTime * 0.001;
 
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        const breathingFactor = Math.sin(time * breathingSpeed) * 0.3 + 1.0;
+      const breathingFactor = Math.sin(time * breathingSpeed) * 0.3 + 1.0;
 
-        ctx.beginPath();
-        ctx.arc(centerX, centerY, 2, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(16, 185, 129, 0.9)';
-        ctx.fill();
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, 2, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(16, 185, 129, 0.9)';
+      ctx.fill();
 
-        for (let row = 0; row < gridSize; row++) {
-          for (let col = 0; col < gridSize; col++) {
-            if (
-              row === Math.floor(gridSize / 2) &&
-              col === Math.floor(gridSize / 2)
-            )
-              continue;
+      for (let row = 0; row < gridSize; row++) {
+        for (let col = 0; col < gridSize; col++) {
+          const isCenter =
+            row === Math.floor(gridSize / 2) &&
+            col === Math.floor(gridSize / 2);
+          if (isCenter) continue;
 
-            const baseX = (col - (gridSize - 1) / 2) * spacing;
-            const baseY = (row - (gridSize - 1) / 2) * spacing;
+          const baseX = (col - (gridSize - 1) / 2) * spacing;
+          const baseY = (row - (gridSize - 1) / 2) * spacing;
 
-            const distance = Math.sqrt(baseX * baseX + baseY * baseY);
-            const maxDistance = (spacing * Math.sqrt(2) * (gridSize - 1)) / 2;
-            const normalizedDistance = distance / maxDistance;
-            const angle = Math.atan2(baseY, baseX);
+          const distance = Math.sqrt(baseX * baseX + baseY * baseY);
+          const normalizedDistance = distance / maxDistance;
+          const angle = Math.atan2(baseY, baseX);
 
-            const radialPhase = (time - normalizedDistance) % 1;
-            const radialWave = Math.sin(radialPhase * Math.PI * 2) * 3;
+          const radialPhase = (time - normalizedDistance) % 1;
+          const radialWave = Math.sin(radialPhase * Math.PI * 2) * 3;
 
-            const breathingX = baseX * breathingFactor;
-            const breathingY = baseY * breathingFactor;
+          const waveX =
+            centerX +
+            baseX * breathingFactor +
+            Math.cos(angle) * radialWave;
+          const waveY =
+            centerY +
+            baseY * breathingFactor +
+            Math.sin(angle) * radialWave;
 
-            const waveX = centerX + breathingX + Math.cos(angle) * radialWave;
-            const waveY = centerY + breathingY + Math.sin(angle) * radialWave;
+          const baseSize = 1.2 + (1 - normalizedDistance) * 1.2;
+          const pulseFactor =
+            Math.sin(time * 2.5 + normalizedDistance * 4) * 0.7 + 1;
+          const size = baseSize * pulseFactor;
 
-            const baseSize = 1.2 + (1 - normalizedDistance) * 1.2;
-            const pulseFactor =
-              Math.sin(time * 2.5 + normalizedDistance * 4) * 0.7 + 1;
-            const size = baseSize * pulseFactor;
+          const emeraldAmount =
+            Math.sin(time + normalizedDistance * 3) * 0.4 + 0.6;
+          const opacity =
+            0.4 +
+            Math.sin(time * 1.8 + angle * 2) * 0.3 +
+            normalizedDistance * 0.3;
 
-            const emeraldAmount =
-              Math.sin(time + normalizedDistance * 3) * 0.4 + 0.6;
-            const opacity =
-              0.4 +
-              Math.sin(time * 1.8 + angle * 2) * 0.3 +
-              normalizedDistance * 0.3;
-
-            ctx.beginPath();
-            ctx.arc(waveX, waveY, size, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(16, 185, 129, ${opacity * emeraldAmount})`;
-            ctx.fill();
-          }
+          ctx.beginPath();
+          ctx.arc(waveX, waveY, size, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(16, 185, 129, ${opacity * emeraldAmount})`;
+          ctx.fill();
         }
-
-        requestAnimationFrame(animate);
       }
 
-      if (isVisible) {
-        requestAnimationFrame(animate);
-      }
+      animationId = requestAnimationFrame(animate);
     }
 
-    if (isVisible) {
-      setupPulsingGrid();
-    }
+    animationId = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationId) {
+        cancelAnimationFrame(animationId);
+      }
+    };
   }, [isVisible]);
 
   if (!isVisible) return null;
@@ -111,11 +106,12 @@ const LoadingAnimation = ({
 
         <div className='relative flex flex-col items-center space-y-6'>
           <div className='relative'>
-            <div
-              id='modal-pulsing-grid'
-              className='relative h-[120px] w-[120px]'
+            <canvas
+              ref={canvasRef}
+              width={120}
+              height={120}
+              className='relative'
             />
-
             <div className='absolute inset-0 scale-150 animate-pulse rounded-full bg-emerald-400/20 blur-xl' />
           </div>
 
