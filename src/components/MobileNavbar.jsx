@@ -31,15 +31,18 @@ export default function MobileNavbar() {
   }, [mobileNavOpen]);
 
   const mobileMenuVariant = {
-    opened: {
-      y: '0%',
-      transition: { delay: 0.05, duration: 0.6, ease: [0.74, 0, 0.19, 1.02] },
-    },
-    closed: {
-      y: '-100%',
-      transition: { delay: 0.2, duration: 0.4, ease: [0.74, 0, 0.19, 1.02] },
-    },
-  };
+  opened: {
+    y: '0%',
+    visibility: 'visible',
+    transition: { delay: 0.05, duration: 0.6, ease: [0.74, 0, 0.19, 1.02] },
+  },
+  closed: {
+    y: '-100%',
+    visibility: 'hidden',
+    transition: { delay: 0.2, duration: 0.4, ease: [0.74, 0, 0.19, 1.02] },
+  },
+};
+
 
   const fadeInVariant = {
     opened: { opacity: 1, transition: { delay: 0.7, duration: 0.4 } },
