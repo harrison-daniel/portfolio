@@ -8,6 +8,9 @@ import { ExternalLink } from 'lucide-react';
 import PicknFlickHome from '../../public/assets/images/picknflick-home.png';
 import GitPubHome from '../../public/assets/images/gitpub-dark.png';
 import PasswordGeneratorHome from '../../public/assets/images/password-generator-home.png';
+import PortfolioScreenshot from '../../public/assets/images/portfolio-screenshot.png';
+import HomeAssistantServerScreenshot from '../../public/assets/images/ha-server-screenshot.png';
+
 import { motion } from 'framer-motion';
 import { VIDEO_URLS } from '../lib/videoUrls';
 
@@ -131,6 +134,100 @@ export default function Work() {
 
         {/* ---------- CARD 1 ---------- */}
         <StackingCardItem index={0} className='h-[620px]'>
+          <div className='relative mx-auto flex h-[85%] w-11/12'>
+            <article className='flex h-full w-full flex-col overflow-hidden rounded-2xl border border-black/5 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-black md:p-6'>
+              <header className='mb-4'>
+                <h3 className='text-2xl font-bold text-neutral-900 dark:text-white'>
+                  GitPub
+                </h3>
+                <p className='mt-2 max-w-prose text-sm text-neutral-700 dark:text-neutral-300'>
+                  Search for breweries in your area and add custom entries or
+                  notes to your profile.
+                </p>
+                <p className='mb-4 text-xs text-neutral-800 dark:text-neutral-200 md:text-sm'>
+                  <span className='font-bold'>Front-end: </span>
+                  Next.js, React.js, Framer Motion, Tailwind CSS, Shadcn UI.
+                </p>
+                <p className='text-xs text-neutral-800 dark:text-neutral-200 md:text-sm'>
+                  <span className='font-bold'>Back-end: </span>
+                  Deployed via GitHub Actions to Vercel, NextAuth for auth.
+                </p>
+              </header>
+              {/* --------- VIDEO --------- */}
+
+              <div className={mediaBox}>
+                <video
+                  className={videoClasses}
+                  src={VIDEO_URLS.gitpub.src}
+                  poster={GitPubHome.src}
+                  playsInline
+                  muted
+                  loop
+                  autoPlay
+                  preload='metadata'
+                />
+                <button
+                  type='button'
+                  aria-label='Enlarge GitPub demo'
+                  className='absolute inset-0'
+                  onClick={(e) => {
+                    openerRef.current = e.currentTarget;
+                    setOpenVideo('gp');
+                  }}
+                />
+              </div>
+              {/*  ----------- VIDEO END -------- */}
+
+              {/*  Tags */}
+              <div className='mt-6 flex flex-wrap gap-2'>
+                {[
+                  'HTML',
+                  'CSS',
+                  'JavaScript',
+                  'React',
+                  'Tailwind CSS',
+                  'ShadcnUI',
+                  'MongoDB',
+                  'OpenBreweryDB',
+                  'Next Auth',
+                  'Vercel',
+                  'Next.js',
+                  'Github Actions',
+                ].map((t) => (
+                  <Tag key={t}>{t}</Tag>
+                ))}
+              </div>
+
+              <div className='mt-auto flex flex-wrap gap-3 pt-6'>
+                <Link
+                  href='https://gitpub.vercel.app/'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='group inline-flex items-center justify-center gap-2 rounded-md border border-black px-3 py-2 font-semibold leading-none text-black ring-1 ring-transparent transition-transform hover:-translate-y-0.5 hover:text-black/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 dark:border-white dark:text-white'>
+                  <span>Visit Site</span>
+                  <ExternalLink
+                    aria-hidden='true'
+                    className='h-4 w-4 transition-transform group-hover:translate-x-1'
+                  />
+                </Link>
+                <Link
+                  href='https://github.com/harrison-daniel/gitpub'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='group inline-flex items-center gap-2 rounded-md px-3 py-2 font-semibold leading-none text-black outline-none ring-1 ring-transparent transition-transform hover:-translate-y-0.5 hover:text-black/90 focus-visible:ring-2 focus-visible:ring-black/30 dark:text-white'>
+                  <span>GitHub Repo</span>
+                  <ExternalLink
+                    aria-hidden='true'
+                    className='h-4 w-4 transition-transform group-hover:translate-x-1'
+                  />
+                </Link>
+              </div>
+            </article>
+          </div>
+        </StackingCardItem>
+
+        {/* ---------- CARD 2 ---------- */}
+        <StackingCardItem index={1} className='h-[620px]'>
           <div className='relative mx-auto flex h-[85%] w-11/12 rounded-3xl'>
             <article className='flex h-full w-full flex-col overflow-hidden rounded-2xl border border-black/5 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-black md:p-6'>
               <header className='mb-4'>
@@ -226,134 +323,41 @@ export default function Work() {
           </div>
         </StackingCardItem>
 
-        {/* ---------- CARD 2 ---------- */}
-        <StackingCardItem index={1} className='h-[620px]'>
-          <div className='relative mx-auto flex h-[85%] w-11/12'>
-            <article className='flex h-full w-full flex-col overflow-hidden rounded-2xl border border-black/5 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-black md:p-6'>
-              <header className='mb-4'>
-                <h3 className='text-2xl font-bold text-neutral-900 dark:text-white'>
-                  GitPub
-                </h3>
-                <p className='mt-2 max-w-prose text-sm text-neutral-700 dark:text-neutral-300'>
-                  Search for breweries in your area and add custom entries or
-                  notes to your profile.
-                </p>
-                <p className='mb-4 text-xs text-neutral-800 dark:text-neutral-200 md:text-sm'>
-                  <span className='font-bold'>Front-end: </span>
-                  Next.js, React.js, Framer Motion, Tailwind CSS, Shadcn UI.
-                </p>
-                <p className='text-xs text-neutral-800 dark:text-neutral-200 md:text-sm'>
-                  <span className='font-bold'>Back-end: </span>
-                  Deployed via GitHub Actions to Vercel, NextAuth for auth.
-                </p>
-              </header>
-              {/* --------- VIDEO --------- */}
-
-              <div className={mediaBox}>
-                <video
-                  className={videoClasses}
-                  src={VIDEO_URLS.gitpub.src}
-                  poster={GitPubHome.src}
-                  playsInline
-                  muted
-                  loop
-                  autoPlay
-                  preload='metadata'
-                />
-                <button
-                  type='button'
-                  aria-label='Enlarge GitPub demo'
-                  className='absolute inset-0'
-                  onClick={(e) => {
-                    openerRef.current = e.currentTarget;
-                    setOpenVideo('gp');
-                  }}
-                />
-              </div>
-              {/*  ----------- VIDEO END -------- */}
-
-              {/*  Tags */}
-              <div className='mt-6 flex flex-wrap gap-2'>
-                {[
-                  'HTML',
-                  'CSS',
-                  'JavaScript',
-                  'React',
-                  'Tailwind CSS',
-                  'ShadcnUI',
-                  'MongoDB',
-                  'OpenBreweryDB',
-                  'Next Auth',
-                  'Vercel',
-                  'Next.js',
-                  'Github Actions',
-                ].map((t) => (
-                  <Tag key={t}>{t}</Tag>
-                ))}
-              </div>
-
-              <div className='mt-auto flex flex-wrap gap-3 pt-6'>
-                <Link
-                  href='https://gitpub.vercel.app/'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='group inline-flex items-center justify-center gap-2 rounded-md border border-black px-3 py-2 font-semibold leading-none text-black ring-1 ring-transparent transition-transform hover:-translate-y-0.5 hover:text-black/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 dark:border-white dark:text-white'>
-                  <span>Visit Site</span>
-                  <ExternalLink
-                    aria-hidden='true'
-                    className='h-4 w-4 transition-transform group-hover:translate-x-1'
-                  />
-                </Link>
-                <Link
-                  href='https://github.com/harrison-daniel/gitpub'
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  className='group inline-flex items-center gap-2 rounded-md px-3 py-2 font-semibold leading-none text-black outline-none ring-1 ring-transparent transition-transform hover:-translate-y-0.5 hover:text-black/90 focus-visible:ring-2 focus-visible:ring-black/30 dark:text-white'>
-                  <span>GitHub Repo</span>
-                  <ExternalLink
-                    aria-hidden='true'
-                    className='h-4 w-4 transition-transform group-hover:translate-x-1'
-                  />
-                </Link>
-              </div>
-            </article>
-          </div>
-        </StackingCardItem>
-
         {/* ---------- CARD 3 ---------- */}
         <StackingCardItem index={2} className='h-[620px]'>
           <div className='relative mx-auto flex h-[85%] w-11/12'>
             <article className='flex h-full w-full flex-col overflow-hidden rounded-2xl border border-black/5 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-black md:p-6'>
               <header className='mb-4'>
                 <h3 className='text-2xl font-bold text-neutral-900 dark:text-white'>
-                  Password Generator
+                  Home Automation
                 </h3>
                 <p className='mt-2 max-w-prose text-sm text-neutral-700 dark:text-neutral-300'>
-                  Custom, unique password generator with options for length and
-                  character types.
+                  Home Automation for my LG TV and Philips Hue Smart Lights
+                  controlled via a Ubuntu server hosted locally via the LG webOS
+                  and Hue API.
                 </p>
                 <p className='mb-4 text-xs text-neutral-800 dark:text-neutral-200 md:text-sm'>
                   <span className='font-bold'>Front-end: </span>
-                  HTML, CSS, JavaScript with responsive design.
+                  Home Assistant
                 </p>
                 <p className='text-xs text-neutral-800 dark:text-neutral-200 md:text-sm'>
                   <span className='font-bold'>Back-end: </span>
-                  GitHub Pages for static hosting and deployment.
+                  Ubuntu Server, Docker, Python, Fast API, Static IP (Unifi)
                 </p>
               </header>
               {/* --------- VIDEO --------- */}
               <div className={mediaBox}>
                 <video
                   className={videoClasses}
-                  src={VIDEO_URLS.passwordGenerator.src}
-                  poster={PasswordGeneratorHome.src}
+                  // src={VIDEO_URLS.homeAssistant.src}
+                  poster={HomeAssistantServerScreenshot.src}
                   playsInline
                   muted
                   loop
                   autoPlay
                   preload='metadata'
                 />
-                <button
+                {/* <button
                   type='button'
                   aria-label='Enlarge Password Generator demo'
                   className='absolute inset-0'
@@ -361,13 +365,20 @@ export default function Work() {
                     openerRef.current = e.currentTarget;
                     setOpenVideo('pg');
                   }}
-                />
+                /> */}
               </div>
               {/*  ----------- VIDEO END -------- */}
 
               {/* Tags */}
               <div className='mt-6 flex flex-wrap gap-2'>
-                {['HTML', 'CSS', 'JavaScript', 'Github Pages'].map((t) => (
+                {[
+                  'Ubuntu Server',
+                  'Docker',
+                  'Python',
+                  'Fast API',
+                  'Git',
+                  'Home Assistant',
+                ].map((t) => (
                   <Tag key={t}>{t}</Tag>
                 ))}
               </div>
@@ -386,6 +397,100 @@ export default function Work() {
                 </Link>
                 <Link
                   href='https://github.com/harrison-daniel/password-generator'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='group inline-flex items-center gap-2 rounded-md px-3 py-2 font-semibold leading-none text-black outline-none ring-1 ring-transparent transition-transform hover:-translate-y-0.5 hover:text-black/90 focus-visible:ring-2 focus-visible:ring-black/30 dark:text-white'>
+                  <span>GitHub Repo</span>
+                  <ExternalLink
+                    aria-hidden='true'
+                    className='h-4 w-4 transition-transform group-hover:translate-x-1'
+                  />
+                </Link>
+              </div>
+            </article>
+          </div>
+        </StackingCardItem>
+
+        {/* ---------- CARD 4 ---------- */}
+        <StackingCardItem index={3} className='h-[620px]'>
+          <div className='relative mx-auto flex h-[85%] w-11/12 rounded-3xl'>
+            <article className='flex h-full w-full flex-col overflow-hidden rounded-2xl border border-black/5 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-black md:p-6'>
+              <header className='mb-4'>
+                <h3 className='text-2xl font-bold text-neutral-900 dark:text-white'>
+                  Portfolio
+                </h3>
+                <p className='mt-2 max-w-prose text-sm text-neutral-700 dark:text-neutral-300'>
+                  Custom site for my Portfolio Projects and experience, as well
+                  as central place to host and share my Photography and Drone
+                  work.
+                </p>
+                <p className='mb-4 text-xs text-neutral-800 dark:text-neutral-200 md:text-sm'>
+                  <span className='font-bold'>Front-end: </span>
+                  Next.js, React.js, Framer Motion, Tailwind CSS, Shadcn UI,
+                  Zod.
+                </p>
+                <p className='text-xs text-neutral-800 dark:text-neutral-200 md:text-sm'>
+                  <span className='font-bold'>Back-end: </span>
+                  Hosted on Vercel, Cloudflare R2 for storage and video
+                  streaming, Nodemailer for sending contact form submissions.
+                </p>
+              </header>
+
+              {/* --------- VIDEO START --------- */}
+              <div className={mediaBox}>
+                <video
+                  className={videoClasses}
+                  poster={PortfolioScreenshot.src}
+                  playsInline
+                  muted
+                  loop
+                  autoPlay
+                  preload='metadata'
+                />
+                {/* <button
+                  type='button'
+                  aria-label='Enlarge Pick n Flick demo'
+                  className='absolute inset-0'
+                  onClick={(e) => {
+                    openerRef.current = e.currentTarget;
+                    setOpenVideo('pf');
+                  }}
+                /> */}
+              </div>
+              {/* --------- VIDEO END --------- */}
+
+              {/* Tags */}
+              <div className='mt-6 flex flex-wrap gap-2'>
+                {[
+                  'HTML',
+                  'CSS',
+                  'JavaScript',
+                  'React',
+                  'Tailwind CSS',
+                  'Framer Motion',
+                  'Next.js',
+                  'Vercel',
+                  'Cloudflare R2',
+                ].map((t) => (
+                  <Tag key={t}>{t}</Tag>
+                ))}
+              </div>
+
+              <div className='mt-auto flex flex-wrap gap-3 pt-6'>
+                <Link
+                  href='https://harrisondaniel.dev'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  aria-label='Open Pick n Flick in a new tab'
+                  className='group inline-flex items-center justify-center gap-2 rounded-md border border-black px-3 py-2 font-semibold leading-none text-black ring-1 ring-transparent transition-transform hover:-translate-y-0.5 hover:text-black/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 dark:border-white dark:text-white'>
+                  <span>Visit Site</span>
+                  <ExternalLink
+                    aria-hidden='true'
+                    className='h-4 w-4 transition-transform group-hover:translate-x-1'
+                  />
+                </Link>
+                <Link
+                  href='https://github.com/harrison-daniel/portfolio'
                   target='_blank'
                   rel='noopener noreferrer'
                   className='group inline-flex items-center gap-2 rounded-md px-3 py-2 font-semibold leading-none text-black outline-none ring-1 ring-transparent transition-transform hover:-translate-y-0.5 hover:text-black/90 focus-visible:ring-2 focus-visible:ring-black/30 dark:text-white'>

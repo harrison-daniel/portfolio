@@ -75,14 +75,14 @@ export default function Home() {
                     <BsFillEnvelopeFill />
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link
                     href='tel:+8045199827'
                     className='transition-transform duration-200 hover:scale-110'
                     aria-label='Call Phone'>
                     <BsFillTelephoneFill />
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </motion.div>

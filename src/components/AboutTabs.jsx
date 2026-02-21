@@ -2,8 +2,10 @@
 
 import { useMemo, useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
 import { VIDEO_URLS } from '../lib/videoUrls';
+import part107Logo from '../../public/assets/images/Part 107 no BG.png';
 
 const Chip = ({ children }) => (
   <span className='rounded-md bg-gray-100 px-2 py-1 text-xs font-medium text-gray-700 dark:bg-white/10 dark:text-neutral-200'>
@@ -73,10 +75,10 @@ export default function AboutTabs() {
   const prefersReduced = useReducedMotion();
 
   const tabs = [
-    { id: 'now', label: 'Now' },
-    { id: 'tools', label: 'Tools' },
+    // { id: 'now', label: 'Now' },
+    { id: 'tools', label: 'Technical Skills and Tools' },
     { id: 'home_lab', label: 'Home Lab' },
-    { id: 'drone', label: 'Drone' },
+    { id: 'drone', label: 'Drone Services' },
   ];
 
   const [active, setActive] = useState(tabs[0].id);
@@ -138,6 +140,14 @@ export default function AboutTabs() {
                 <Chip key={t}>{t}</Chip>
               ))}
             </div>
+            <div className='flex justify-center'>
+              <Image
+                src={part107Logo}
+                alt='part 107 FAA logo'
+                width={120}
+                className=''
+              />
+            </div>
           </div>
         </div>
       </PanelCard>
@@ -152,10 +162,16 @@ export default function AboutTabs() {
             Tools & Workflow
           </h3>
           <p className='mt-2 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
-            I use VS Code as my primary IDE with Prettier, Copilot, and
-            Intellisense. I also use the Claude CLI via Git Bash for quick
-            prompts and Github Actions for basic CI. <br /> <br />
-            For hosting, I use a mix of Vercel, AWS, and CloudFlare.
+            <span className='font-semibold'> Development & DevOps: </span> VS
+            Code, Git, Docker, GitHub Actions, Prettier, Copilot <br />
+            <span className='font-semibold'>Cloud & Hosting:</span>AWS, Vercel,
+            Cloudflare (R2, Edge, DNS) <br />
+            <span className='font-semibold'>Networking & Home Lab:</span> UniFi
+            Cloud Gateway, Switch Lite 8 PoE, U7 Pro APs, VLANs, Ubuntu Server,
+            Grafana <br />
+            <span className='font-semibold'>Drone & Media Projects: </span> DJI
+            Mini 3 Pro (4K/60fps, 48MP), Premiere Pro, Litchi, automated flight
+            paths
           </p>
           <div className='mt-4 flex flex-wrap gap-2'>
             {[
@@ -173,38 +189,38 @@ export default function AboutTabs() {
           </div>
         </PanelCard>
       ),
-      now: (
-        <PanelCard>
-          <h3 className='text-base font-bold text-neutral-900 dark:text-white'>
-            What I'm Building Now
-          </h3>
-          <p className='mt-2 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
-            Home automation using Philips Hue smart bulbs and the LG TV webOS
-            API. <br />
-            <br />A single endpoint configures lighting and TV settings for
-            different contexts (movie night, daytime viewing, gaming).
-            Coordinates Hue brightness/color and LG TV picture modes
-            simultaneously instead of adjusting each separately. Built with a
-            local Python/FastAPI backend since all devices are on the same
-            network.
-          </p>
-          <ul className='mt-3 list-disc space-y-2 pl-5 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
-            <li>API-based automation for coordinated device control</li>
-          </ul>
-          <div className='mt-4 flex flex-wrap gap-2'>
-            {[
-              'Philips Hue API',
-              'LG webOS API',
-              'Python',
-              'FastAPI',
-              'AWS Lambda',
-              'Terraform',
-            ].map((t) => (
-              <Chip key={t}>{t}</Chip>
-            ))}
-          </div>
-        </PanelCard>
-      ),
+      // now: (
+      //   <PanelCard>
+      //     <h3 className='text-base font-bold text-neutral-900 dark:text-white'>
+      //       What I'm Building Now
+      //     </h3>
+      //     <p className='mt-2 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
+      //       Home automation using Philips Hue smart bulbs and the LG TV webOS
+      //       API. <br />
+      //       <br />A single endpoint configures lighting and TV settings for
+      //       different contexts (movie night, daytime viewing, gaming).
+      //       Coordinates Hue brightness/color and LG TV picture modes
+      //       simultaneously instead of adjusting each separately. Built with a
+      //       local Python/FastAPI backend since all devices are on the same
+      //       network.
+      //     </p>
+      //     <ul className='mt-3 list-disc space-y-2 pl-5 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
+      //       <li>API-based automation for coordinated device control</li>
+      //     </ul>
+      //     <div className='mt-4 flex flex-wrap gap-2'>
+      //       {[
+      //         'Philips Hue API',
+      //         'LG webOS API',
+      //         'Python',
+      //         'FastAPI',
+      //         'AWS Lambda',
+      //         'Terraform',
+      //       ].map((t) => (
+      //         <Chip key={t}>{t}</Chip>
+      //       ))}
+      //     </div>
+      //   </PanelCard>
+      // ),
       drone: <DronePanel />,
       home_lab: (
         <PanelCard>
@@ -213,18 +229,20 @@ export default function AboutTabs() {
           </h3>
           <p className='mt-2 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
             UniFi network — Cloud Gateway Ultra, Switch Lite 8 PoE, two U7 Pro
-            APs. VLANs segment IoT, main, and guest traffic. Adding monitoring
-            via Grafana.
+            APs. VLANs segment IoT, main, and guest traffic. Ubuntu Server for
+            hosting HomeAssistant.
           </p>
           <ul className='mt-3 list-disc space-y-2 pl-5 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
-            <li>
-              Expanding local services on Raspberry Pi for lightweight system
-              workloads
-            </li>
             <li>Exploring self-hosted LLM options for local automation.</li>
           </ul>
           <div className='mt-4 flex flex-wrap gap-2'>
-            {['Ubiquiti Unifi', 'VLANs', 'Raspberry Pi', 'Docker'].map((t) => (
+            {[
+              'Ubiquiti Unifi',
+              'VLANs',
+              'Ubuntu Server',
+              'Docker',
+              'Home Assistant',
+            ].map((t) => (
               <Chip key={t}>{t}</Chip>
             ))}
           </div>

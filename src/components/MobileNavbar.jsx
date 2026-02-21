@@ -231,11 +231,11 @@ export default function MobileNavbar() {
                     <BsFillEnvelopeFill />
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href='tel:+8045199827'>
                     <BsFillTelephoneFill />
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
           </motion.div>

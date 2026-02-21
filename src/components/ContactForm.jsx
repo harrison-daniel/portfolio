@@ -46,11 +46,11 @@ const SOCIAL_LINKS = [
     icon: BsFillEnvelopeFill,
     label: 'Send Email',
   },
-  {
-    href: 'tel:+8045199827',
-    icon: BsFillTelephoneFill,
-    label: 'Call Phone',
-  },
+  // {
+  //   href: 'tel:+8045199827',
+  //   icon: BsFillTelephoneFill,
+  //   label: 'Call Phone',
+  // },
 ];
 
 const ContactForm = () => {

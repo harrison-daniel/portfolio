@@ -20,12 +20,11 @@ export default function About() {
 
       <motion.p
         variants={fadeUp}
-        className='mx-auto flex max-w-3xl flex-col justify-center text-center text-neutral-800'>
-        Technical background spanning IT administration, SaaS systems
-        configuration, and full-stack web development. I specialize in
-        troubleshooting, optimization, and bridging technical depth with
-        customer perspective so that my applications are intuitive and
-        functional.
+        className='mx-auto my-6 flex max-w-lg flex-col justify-center text-center text-neutral-800'>
+        Technical professional with experience in IT administration, SaaS
+        systems, and full-stack web development. I specialize in building and
+        optimizing systems that are both functional and user-friendly, with a
+        focus on troubleshooting, performance, and automation.
       </motion.p>
     </motion.div>
   );
