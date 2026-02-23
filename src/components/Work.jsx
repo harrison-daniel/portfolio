@@ -383,7 +383,7 @@ export default function Work() {
                 ))}
               </div>
 
-              <div className='mt-auto flex flex-wrap gap-3 pt-6'>
+              {/* <div className='mt-auto flex flex-wrap gap-3 pt-6'>
                 <Link
                   href='https://harrison-daniel.github.io/password-generator/'
                   target='_blank'
@@ -406,7 +406,7 @@ export default function Work() {
                     className='h-4 w-4 transition-transform group-hover:translate-x-1'
                   />
                 </Link>
-              </div>
+              </div> */}
             </article>
           </div>
         </StackingCardItem>
