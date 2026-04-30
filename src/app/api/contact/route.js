@@ -1,17 +1,29 @@
 import nodemailer from 'nodemailer';
+import { contactSchema } from '../../../lib/contactSchema';
 
 const attempts = new Map();
 
 export async function POST(req) {
   try {
-    const { name, email, phone, message, recaptchaToken } = await req.json();
+    const body = await req.json();
+    const { recaptchaToken, ...fields } = body ?? {};
 
-    if (!name || !email || !message || !recaptchaToken) {
+    if (!recaptchaToken) {
       return Response.json(
-        { message: 'Missing required fields' },
+        { message: 'Missing security token' },
         { status: 400 },
       );
     }
+
+    const parsed = contactSchema.safeParse(fields);
+    if (!parsed.success) {
+      return Response.json(
+        { message: 'Invalid input' },
+        { status: 400 },
+      );
+    }
+
+    const { name, email, phone, message } = parsed.data;
 
     if (process.env.NODE_ENV === 'production') {
       const ip = req.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown';

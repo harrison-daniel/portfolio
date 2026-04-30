@@ -8,6 +8,7 @@ import { ExternalLink } from 'lucide-react';
 import PicknFlickHome from '../../public/assets/images/picknflick-home.png';
 import GitPubHome from '../../public/assets/images/gitpub-dark.png';
 import PasswordGeneratorHome from '../../public/assets/images/password-generator-home.png';
+import SetLoopFullView from '../../public/assets/images/SetLoop-full-view-dropdown.png';
 import PortfolioScreenshot from '../../public/assets/images/portfolio-screenshot.png';
 import HomeAssistantServerScreenshot from '../../public/assets/images/ha-server-screenshot.png';
 
@@ -411,8 +412,106 @@ export default function Work() {
           </div>
         </StackingCardItem>
 
-        {/* ---------- CARD 4 ---------- */}
+        {/* ---------- CARD 4 (SetLoop) ---------- */}
         <StackingCardItem index={3} className='h-[620px]'>
+          <div className='relative mx-auto flex h-[85%] w-11/12 rounded-3xl'>
+            <article className='flex h-full w-full flex-col overflow-hidden rounded-2xl border border-black/5 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-black md:p-6'>
+              <header className='mb-4'>
+                <h3 className='text-2xl font-bold text-neutral-900 dark:text-white'>
+                  SetLoop
+                </h3>
+                <p className='mt-2 max-w-prose text-sm text-neutral-700 dark:text-neutral-300'>
+                  Hands-free Chrome extension for voice-controlled video
+                  looping. Say "loop last 30 at 50" to practice any section of
+                  any video — no clicks, no tab switching. Built for musicians
+                  and learners who can't reach the keyboard.
+                </p>
+                <p className='mb-4 text-xs text-neutral-800 dark:text-neutral-200 md:text-sm'>
+                  <span className='font-bold'>Extension: </span>
+                  Chrome Manifest V3, vanilla JavaScript, Web Speech API, custom
+                  grammar parser with fuzzy mishear correction, zero runtime
+                  dependencies (~100 KB shipped).
+                </p>
+                <p className='text-xs text-neutral-800 dark:text-neutral-200 md:text-sm'>
+                  <span className='font-bold'>Infra: </span>
+                  Cloudflare Pages (custom domain + auto SSL), GitHub Actions
+                  CI, Wrangler deploys on push to main.
+                </p>
+              </header>
+
+              {/* --------- VIDEO START --------- */}
+              <div className={mediaBox}>
+                <video
+                  className={videoClasses}
+                  // src={VIDEO_URLS.setloop.src}
+                  poster={SetLoopFullView.src}
+                  playsInline
+                  muted
+                  loop
+                  autoPlay
+                  preload='metadata'
+                />
+                {/* <button
+                  type='button'
+                  aria-label='Enlarge SetLoop demo'
+                  className='absolute inset-0'
+                  onClick={(e) => {
+                    openerRef.current = e.currentTarget;
+                    setOpenVideo('sl');
+                  }}
+                /> */}
+              </div>
+              {/* --------- VIDEO END --------- */}
+
+              {/* Tags */}
+              <div className='mt-6 flex flex-wrap gap-2'>
+                {[
+                  'JavaScript',
+                  'HTML',
+                  'CSS',
+                  'Chrome Extension',
+                  'Manifest V3',
+                  'Web Speech API',
+                  'Cloudflare Pages',
+                  'Wrangler',
+                  'GitHub Actions',
+                  'CI/CD',
+                ].map((t) => (
+                  <Tag key={t}>{t}</Tag>
+                ))}
+              </div>
+
+              <div className='mt-auto flex flex-wrap gap-3 pt-6'>
+                <Link
+                  href='https://setloop.app'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  aria-label='Open SetLoop site in a new tab'
+                  className='group inline-flex items-center justify-center gap-2 rounded-md border border-black px-3 py-2 font-semibold leading-none text-black ring-1 ring-transparent transition-transform hover:-translate-y-0.5 hover:text-black/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black/30 dark:border-white dark:text-white'>
+                  <span>Visit Site</span>
+                  <ExternalLink
+                    aria-hidden='true'
+                    className='h-4 w-4 transition-transform group-hover:translate-x-1'
+                  />
+                </Link>
+                <Link
+                  href='https://github.com/harrison-daniel/SetLoop'
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  className='group inline-flex items-center gap-2 rounded-md px-3 py-2 font-semibold leading-none text-black outline-none ring-1 ring-transparent transition-transform hover:-translate-y-0.5 hover:text-black/90 focus-visible:ring-2 focus-visible:ring-black/30 dark:text-white'>
+                  <span>GitHub Repo</span>
+                  <ExternalLink
+                    aria-hidden='true'
+                    className='h-4 w-4 transition-transform group-hover:translate-x-1'
+                  />
+                </Link>
+              </div>
+            </article>
+          </div>
+        </StackingCardItem>
+
+        {/* ---------- CARD 5 ---------- */}
+        <StackingCardItem index={4} className='h-[620px]'>
           <div className='relative mx-auto flex h-[85%] w-11/12 rounded-3xl'>
             <article className='flex h-full w-full flex-col overflow-hidden rounded-2xl border border-black/5 bg-white p-4 shadow-sm dark:border-white/10 dark:bg-black md:p-6'>
               <header className='mb-4'>
@@ -478,7 +577,7 @@ export default function Work() {
 
               <div className='mt-auto flex flex-wrap gap-3 pt-6'>
                 <Link
-                  href='https://harrisondaniel.dev'
+                  href='https://www.harrisondaniel.dev'
                   target='_blank'
                   rel='noopener noreferrer'
                   aria-label='Open Pick n Flick in a new tab'

@@ -8,9 +8,29 @@ import { Inter } from 'next/font/google';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
+  metadataBase: new URL('https://harrisondaniel.dev'),
   title: 'Harrison Daniel',
   description:
     'Technical portfolio - IT administration, systems configuration, and web development.',
+  openGraph: {
+    title: 'Harrison Daniel',
+    description:
+      'Technical portfolio - IT administration, systems configuration, and web development.',
+    url: 'https://harrisondaniel.dev',
+    siteName: 'Harrison Daniel',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Harrison Daniel',
+    description:
+      'Technical portfolio - IT administration, systems configuration, and web development.',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export const viewport = {

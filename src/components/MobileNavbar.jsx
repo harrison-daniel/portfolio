@@ -5,7 +5,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
-import { BsFillEnvelopeFill, BsFillTelephoneFill } from 'react-icons/bs';
+import { BsFillEnvelopeFill } from 'react-icons/bs';
 import HdLogo1 from '../../public/assets/images/hd-logo-1.png';
 import { BiDownload } from 'react-icons/bi';
 import useActiveSection from '../lib/useActiveSection';
@@ -178,36 +178,49 @@ export default function MobileNavbar() {
           <motion.ul
             variants={ulVariant}
             className='flex flex-col items-center gap-9 pt-10 text-2xl font-bold text-black'>
-            {MOBILE_NAV_ITEMS.map((navItem) => (
-              <motion.li
-                whileTap={{ scale: 0.95 }}
-                key={navItem.id}
-                onClick={() => setMobileNavOpen(false)}>
-                <motion.div variants={liVariant}>
-                  {navItem.newTab ? (
-                    <Link
-                      href='/HarrisonDanielResume.pdf'
-                      target='_blank'
-                      rel='noopener noreferrer'
-                      className='flex flex-row items-center gap-2 rounded-md border border-black px-2 py-1 text-lg font-bold text-neutral-900'>
-                      <BiDownload />
-                      Resume
-                    </Link>
-                  ) : (
-                    <Link
-                      href={navItem.href}
-                      className={[
-                        'font-semibold uppercase',
-                        activeSection === navItem.activeSection
-                          ? 'text-emerald-700'
-                          : '',
-                      ].join(' ')}>
-                      {navItem.navTitle}
-                    </Link>
-                  )}
-                </motion.div>
-              </motion.li>
-            ))}
+            {MOBILE_NAV_ITEMS.map((navItem) => {
+              const handleHashClick = (e) => {
+                if (!navItem.href?.startsWith('/#')) return;
+                e.preventDefault();
+                const id = navItem.href.slice(2);
+                setMobileNavOpen(false);
+                requestAnimationFrame(() => {
+                  document
+                    .getElementById(id)
+                    ?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+              };
+
+              return (
+                <motion.li whileTap={{ scale: 0.95 }} key={navItem.id}>
+                  <motion.div variants={liVariant}>
+                    {navItem.newTab ? (
+                      <Link
+                        href='/HarrisonDanielResume.pdf'
+                        target='_blank'
+                        rel='noopener noreferrer'
+                        onClick={() => setMobileNavOpen(false)}
+                        className='flex flex-row items-center gap-2 rounded-md border border-black px-2 py-1 text-lg font-bold text-neutral-900'>
+                        <BiDownload />
+                        Resume
+                      </Link>
+                    ) : (
+                      <Link
+                        href={navItem.href}
+                        onClick={handleHashClick}
+                        className={[
+                          'font-semibold uppercase',
+                          activeSection === navItem.activeSection
+                            ? 'text-emerald-700'
+                            : '',
+                        ].join(' ')}>
+                        {navItem.navTitle}
+                      </Link>
+                    )}
+                  </motion.div>
+                </motion.li>
+              );
+            })}
           </motion.ul>
 
           <motion.div variants={fadeInVariant}>

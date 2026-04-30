@@ -2,33 +2,17 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import * as z from 'zod';
 import {
   GoogleReCaptchaProvider,
   useGoogleReCaptcha,
 } from 'react-google-recaptcha-v3';
 import { toast } from 'sonner';
 import { AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
-import { BsFillEnvelopeFill, BsFillTelephoneFill } from 'react-icons/bs';
+import { BsFillEnvelopeFill } from 'react-icons/bs';
 import { BiDownload } from 'react-icons/bi';
 import LoadingAnimation from './ui/LoadingAnimation';
 import Link from 'next/link';
-
-const schema = z.object({
-  name: z.string().min(1, 'Name is required').max(100, 'Name too long'),
-  email: z.string().email('Invalid email address').max(100, 'Email too long'),
-  phone: z
-    .string()
-    .optional()
-    .refine(
-      (val) => !val || val.length === 0 || val.length === 10,
-      'Phone must be exactly 10 digits',
-    ),
-  message: z
-    .string()
-    .min(1, 'Message cannot be empty')
-    .max(1000, 'Message too long (max 1000 characters)'),
-});
+import { contactSchema } from '../lib/contactSchema';
 
 const SOCIAL_LINKS = [
   {
@@ -61,7 +45,7 @@ const ContactForm = () => {
     reset,
     setValue,
   } = useForm({
-    resolver: zodResolver(schema),
+    resolver: zodResolver(contactSchema),
   });
 
   const { executeRecaptcha } = useGoogleReCaptcha();
@@ -311,9 +295,9 @@ const ContactForm = () => {
 
 const ContactFormWrapper = () => (
   <div className='relative mx-auto flex w-full max-w-2xl flex-col items-center px-4 py-6 sm:py-10 md:py-12'>
-    <h1 className='mb-5 text-center text-2xl font-bold text-black sm:mb-8 sm:text-3xl md:text-4xl'>
+    <h2 className='mb-5 text-center text-2xl font-bold text-black sm:mb-8 sm:text-3xl md:text-4xl'>
       Contact Me
-    </h1>
+    </h2>
 
     {/* Form */}
     <GoogleReCaptchaProvider

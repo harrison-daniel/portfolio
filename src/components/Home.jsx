@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import { AiFillLinkedin, AiFillGithub } from 'react-icons/ai';
-import { BsFillEnvelopeFill, BsFillTelephoneFill } from 'react-icons/bs';
+import { BsFillEnvelopeFill } from 'react-icons/bs';
 
 const landingContainerVariants = {
   hidden: { opacity: 0 },
