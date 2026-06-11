@@ -21,6 +21,11 @@ export const VIDEO_URLS = {
     // poster: `${R2_BASE_URL}/drone-poster.jpg`,
   },
 
+  setLoop: {
+    src: `${R2_BASE_URL}SetLoop%20Portfolio%20Video.mp4`,
+    poster: null,
+  },
+
   // droneClip1: {
   //   src: `${R2_BASE_URL}/drone-clip-1.mp4`,
   //   poster: `${R2_BASE_URL}/drone-clip-1-poster.jpg`,

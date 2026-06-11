@@ -9,23 +9,23 @@ const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
   metadataBase: new URL('https://harrisondaniel.dev'),
-  title: 'Harrison Daniel',
+  title: 'Harrison Daniel — Web Developer | Richmond, VA',
   description:
-    'Technical portfolio - IT administration, systems configuration, and web development.',
+    'Richmond-based developer building web applications with React/Next.js, TypeScript, Node.js, and AWS.',
   openGraph: {
-    title: 'Harrison Daniel',
+    title: 'Harrison Daniel — Web Developer | Richmond, VA',
     description:
-      'Technical portfolio - IT administration, systems configuration, and web development.',
+      'Richmond-based developer building web applications with React/Next.js, TypeScript, Node.js, and AWS.',
     url: 'https://harrisondaniel.dev',
-    siteName: 'Harrison Daniel',
+    siteName: 'Harrison Daniel — Web Developer | Richmond, VA',
     locale: 'en_US',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Harrison Daniel',
+    title: 'Harrison Daniel — Web Developer | Richmond, VA',
     description:
-      'Technical portfolio - IT administration, systems configuration, and web development.',
+      'Richmond-based developer building web applications with React/Next.js, TypeScript, Node.js, and AWS.',
   },
   robots: {
     index: true,
@@ -36,8 +36,6 @@ export const metadata = {
 export const viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 1,
-  userScalable: false,
   themeColor: '#f3f4f6',
 };
 

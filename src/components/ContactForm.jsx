@@ -295,7 +295,7 @@ const ContactForm = () => {
 
 const ContactFormWrapper = () => (
   <div className='relative mx-auto flex w-full max-w-2xl flex-col items-center px-4 py-6 sm:py-10 md:py-12'>
-    <h2 className='mb-5 text-center text-2xl font-bold text-black sm:mb-8 sm:text-3xl md:text-4xl'>
+    <h2 className='mb-5 text-center text-3xl font-bold text-black sm:mb-8 md:text-4xl'>
       Contact Me
     </h2>
 
@@ -314,14 +314,15 @@ const ContactFormWrapper = () => (
     <div className='mt-6 flex w-full flex-col items-center sm:mt-8'>
       <ul className='flex flex-wrap items-center justify-center gap-5 text-2xl sm:gap-8 sm:text-3xl'>
         {SOCIAL_LINKS.map((link) => (
-          <Link
-            key={link.label}
-            href={link.href}
-            target={link.href.startsWith('http') ? '_blank' : undefined}
-            className='transition-transform duration-200 hover:scale-110'
-            aria-label={link.label}>
-            <link.icon />
-          </Link>
+          <li key={link.label}>
+            <Link
+              href={link.href}
+              target={link.href.startsWith('http') ? '_blank' : undefined}
+              className='transition-transform duration-200 hover:scale-110'
+              aria-label={link.label}>
+              <link.icon />
+            </Link>
+          </li>
         ))}
       </ul>
     </div>

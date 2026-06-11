@@ -21,8 +21,8 @@ export default function About() {
       <motion.p
         variants={fadeUp}
         className='mx-auto my-6 flex max-w-lg flex-col justify-center text-center text-neutral-800'>
-        Technical professional with experience in IT administration, SaaS
-        systems, and full-stack web development. I specialize in building and
+        Technical professional with experience in full-stack development, IT
+        administration, and SaaS systems. I specialize in building and
         optimizing systems that are both functional and user-friendly, with a
         focus on troubleshooting, performance, and automation.
       </motion.p>

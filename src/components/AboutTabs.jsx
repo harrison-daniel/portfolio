@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { AnimatePresence, motion, useReducedMotion } from 'framer-motion';
@@ -47,10 +47,9 @@ function TabPill({ active, children, ...props }) {
 
 function useInViewAutoplay(ref, enabled = true) {
   const prefersReduced = useReducedMotion();
-
   const shouldRun = enabled && !prefersReduced;
 
-  useMemo(() => {
+  useEffect(() => {
     if (!shouldRun) return;
 
     const el = ref?.current;
@@ -75,8 +74,7 @@ export default function AboutTabs() {
   const prefersReduced = useReducedMotion();
 
   const tabs = [
-    // { id: 'now', label: 'Now' },
-    { id: 'tools', label: 'Technical Skills and Tools' },
+    { id: 'tools', label: 'Tech Stack' },
     { id: 'home_lab', label: 'Home Lab' },
     { id: 'drone', label: 'Drone Services' },
   ];
@@ -84,10 +82,7 @@ export default function AboutTabs() {
   const [active, setActive] = useState(tabs[0].id);
 
   const DronePanel = () => {
-    const videoRef =
-      /** @type {import('react').RefObject<HTMLVideoElement>} */ (
-        useMemo(() => ({ current: null }), [])
-      );
+    const videoRef = useRef(null);
     useInViewAutoplay(videoRef, true);
 
     return (
@@ -99,9 +94,6 @@ export default function AboutTabs() {
                 ref={videoRef}
                 className='h-full w-full object-cover'
                 src={VIDEO_URLS.droneReel.src}
-                // poster={
-                //   VIDEO_URLS.droneReel.poster || '/drone/drone-poster.jpg'
-                // }
                 playsInline
                 muted
                 loop
@@ -111,15 +103,15 @@ export default function AboutTabs() {
             </div>
 
             <div className='mt-3 flex gap-3'>
-              <Link
+              {/* <Link
                 href='/drone'
                 className='inline-flex items-center justify-center rounded-md border border-black px-3 py-2 text-sm font-semibold text-neutral-900 transition hover:-translate-y-0.5 dark:border-white dark:text-white'>
                 View full gallery
-              </Link>
+              </Link> */}
               <Link
                 href='#contact'
                 className='inline-flex items-center justify-center rounded-md px-3 py-2 text-sm font-semibold text-neutral-900 transition hover:bg-black/5 dark:text-white dark:hover:bg-white/10'>
-                Contact Me for Services
+                Contact me for services
               </Link>
             </div>
           </div>
@@ -129,10 +121,10 @@ export default function AboutTabs() {
               Drone
             </h3>
             <p className='mt-2 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
-              I’m Part 107 certified. I fly a DJI Mini 3 Pro (48MP photos,
-              4K/60fps video) and use Premiere Pro for editing and basic color
-              grading. I'm currently experimenting with automated flight path
-              software to capture repeatable shots and comparisons.
+              Part 107 certified. I fly a DJI Mini 3 Pro — 48MP photos, 4K/60fps
+              video — and edit and color grade in Premiere Pro. Lately I&#39;ve
+              been using automated flight paths to capture repeatable shots and
+              before/after comparisons.
             </p>
 
             <div className='mt-4 flex flex-wrap gap-2'>
@@ -141,12 +133,7 @@ export default function AboutTabs() {
               ))}
             </div>
             <div className='flex justify-center'>
-              <Image
-                src={part107Logo}
-                alt='part 107 FAA logo'
-                width={120}
-                className=''
-              />
+              <Image src={part107Logo} alt='FAA Part 107 logo' width={120} />
             </div>
           </div>
         </div>
@@ -159,68 +146,38 @@ export default function AboutTabs() {
       tools: (
         <PanelCard>
           <h3 className='text-base font-bold text-neutral-900 dark:text-white'>
-            Tools & Workflow
+            Tech Stack
           </h3>
           <p className='mt-2 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
-            <span className='font-semibold'> Development & DevOps: </span> VS
-            Code, Git, Docker, GitHub Actions, Prettier, Copilot <br />
-            <span className='font-semibold'>Cloud & Hosting:</span>AWS, Vercel,
-            Cloudflare (R2, Edge, DNS) <br />
-            <span className='font-semibold'>Networking & Home Lab:</span> UniFi
-            Cloud Gateway, Switch Lite 8 PoE, U7 Pro APs, VLANs, Ubuntu Server,
-            Grafana <br />
-            <span className='font-semibold'>Drone & Media Projects: </span> DJI
-            Mini 3 Pro (4K/60fps, 48MP), Premiere Pro, Litchi, automated flight
-            paths
+            <span className='font-semibold'>Languages: </span>
+            TypeScript, JavaScript, Python, HTML/CSS
+            <br />
+            <span className='font-semibold'>Frontend: </span>
+            React, Next.js, Tailwind CSS, Framer Motion, Zod
+            <br />
+            <span className='font-semibold'>Backend &amp; Data: </span>
+            Node.js, Express, MongoDB, Mongoose, MySQL, REST APIs
+            <br />
+            <span className='font-semibold'>Cloud &amp; DevOps: </span>
+            AWS (EC2, Lambda, API Gateway), Vercel, Cloudflare, Docker, GitHub
+            Actions, CI/CD
           </p>
           <div className='mt-4 flex flex-wrap gap-2'>
             {[
-              'VS Code',
-              'Prettier',
-              'Git',
-              'Copilot, Claude',
-              'Docker',
-              'Vercel',
+              'TypeScript',
+              'React',
+              'Next.js',
+              'Python',
+              'Node.js',
+              'MongoDB',
               'AWS',
-              'Cloudflare (domains, DNS, R2, edge)',
+              'Docker',
             ].map((t) => (
               <Chip key={t}>{t}</Chip>
             ))}
           </div>
         </PanelCard>
       ),
-      // now: (
-      //   <PanelCard>
-      //     <h3 className='text-base font-bold text-neutral-900 dark:text-white'>
-      //       What I'm Building Now
-      //     </h3>
-      //     <p className='mt-2 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
-      //       Home automation using Philips Hue smart bulbs and the LG TV webOS
-      //       API. <br />
-      //       <br />A single endpoint configures lighting and TV settings for
-      //       different contexts (movie night, daytime viewing, gaming).
-      //       Coordinates Hue brightness/color and LG TV picture modes
-      //       simultaneously instead of adjusting each separately. Built with a
-      //       local Python/FastAPI backend since all devices are on the same
-      //       network.
-      //     </p>
-      //     <ul className='mt-3 list-disc space-y-2 pl-5 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
-      //       <li>API-based automation for coordinated device control</li>
-      //     </ul>
-      //     <div className='mt-4 flex flex-wrap gap-2'>
-      //       {[
-      //         'Philips Hue API',
-      //         'LG webOS API',
-      //         'Python',
-      //         'FastAPI',
-      //         'AWS Lambda',
-      //         'Terraform',
-      //       ].map((t) => (
-      //         <Chip key={t}>{t}</Chip>
-      //       ))}
-      //     </div>
-      //   </PanelCard>
-      // ),
       drone: <DronePanel />,
       home_lab: (
         <PanelCard>
@@ -229,15 +186,15 @@ export default function AboutTabs() {
           </h3>
           <p className='mt-2 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
             UniFi network — Cloud Gateway Ultra, Switch Lite 8 PoE, two U7 Pro
-            APs. VLANs segment IoT, main, and guest traffic. Ubuntu Server for
-            hosting HomeAssistant.
+            APs. VLANs segment IoT, main, and guest traffic. An Ubuntu server
+            hosts Home Assistant and a few Dockerized services.
           </p>
           <ul className='mt-3 list-disc space-y-2 pl-5 text-[0.95rem] leading-7 text-neutral-800 dark:text-neutral-200'>
-            <li>Exploring self-hosted LLM options for local automation.</li>
+            <li>Currently testing self-hosted LLMs for local automation.</li>
           </ul>
           <div className='mt-4 flex flex-wrap gap-2'>
             {[
-              'Ubiquiti Unifi',
+              'UniFi',
               'VLANs',
               'Ubuntu Server',
               'Docker',
