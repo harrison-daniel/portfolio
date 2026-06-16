@@ -9,7 +9,7 @@ export default function Page() {
     <div>
       <section
         id='home'
-        className='relative pt-[var(--nav-h)] lg:flex lg:min-h-[900px] lg:items-center xl:min-h-[1000px]'>
+        className='relative pt-[var(--nav-h)] lg:flex lg:min-h-screen lg:items-center'>
         <div className='mx-auto w-full max-w-5xl px-4 pb-40 pt-8 md:pb-52 md:pt-12 lg:pb-0 lg:pt-0'>
           <Home />
         </div>
