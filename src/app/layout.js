@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import BackgroundImage from '../components/BackgroundImage';
 import { Toaster } from '../components/ui/sonner';
 import { Inter } from 'next/font/google';
+import { ImageResponse } from 'next/og';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,6 +20,14 @@ export const metadata = {
     url: 'https://harrisondaniel.dev',
     siteName: 'Harrison Daniel — Web Developer | Richmond, VA',
     locale: 'en_US',
+    images: [
+      {
+        url: 'https://harrisondaniel.dev/assets/images/portfolio-screenshot.png',
+        width: 1200,
+        height: 630,
+        alt: 'Harrison Daniel — Web Developer | Richmond, VA',
+      },
+    ],
     type: 'website',
   },
   twitter: {
