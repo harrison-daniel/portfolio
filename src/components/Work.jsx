@@ -352,7 +352,7 @@ export default function Work() {
 
               <div className='mt-auto flex flex-wrap gap-3 pt-4'>
                 <Link
-                  href='https://harrisondaniel.dev'
+                  href='https://picknflick.com'
                   target='_blank'
                   rel='noopener noreferrer'
                   aria-label='Open Pick n Flick in a new tab'
